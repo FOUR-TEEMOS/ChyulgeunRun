@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    public GameObject[] prefabsToSpawn;       // 2D 프리팹들
+    public GameObject[] prefabsToSpawn;
+    public Transform obstacleTransform;
     public Vector2 spawnPositionOffset;       // 2D 위치 오프셋 (x, y)
     public float spawnInterval = 2f;           // 스폰 간격
 
@@ -30,6 +31,7 @@ public class ObstacleSpawner : MonoBehaviour
                                        transform.position.y + spawnPositionOffset.y,
                                        0f);
 
-        Instantiate(prefab, spawnPos, Quaternion.identity);
+        GameObject spawnerer = Instantiate(prefab, spawnPos, Quaternion.identity);
+        spawnerer.transform.SetParent(this.transform);
     }
 }

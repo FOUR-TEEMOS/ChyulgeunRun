@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 1246759366655463163}
   - component: {fileID: -1475424299768487646}
   m_Layer: 0
-  m_Name: barigate
-  m_TagString: Untagged
+  m_Name: barricade
+  m_TagString: obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4669e8960091cba44957e3369821bb53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 2
 --- !u!114 &-1475424299768487646
 MonoBehaviour:
   m_ObjectHideFlags: 0
