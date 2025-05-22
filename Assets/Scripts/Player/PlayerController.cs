@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
 
     public LayerMask groundLayer;
 
+    
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -40,6 +42,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             isGrounded = false;
+            Debug.Log("C key pressed");
         }
 
         // 슬라이드 (Z 키)
