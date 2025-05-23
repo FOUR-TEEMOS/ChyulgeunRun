@@ -656,9 +656,19 @@ MonoBehaviour:
     weight: 3
   - prefab: {fileID: 5310898431209338279, guid: 1195721826683344ea8cde5dfce6b87b, type: 3}
     weight: 0
-  - prefab: {fileID: 5124642498393798275, guid: 107024a75ccc1044caa04cb0d0696517, type: 3}
+  - prefab: {fileID: 5124642498393798275, guid: 9016ce48517bd65429dccc881faaeb23, type: 3}
     weight: 1
-  - prefab: {fileID: 8646775598842607031, guid: b3c2ed591a90a924bb74e6c7dec0e7ec, type: 3}
+  - prefab: {fileID: 5124642498393798275, guid: 9016ce48517bd65429dccc881faaeb23, type: 3}
+    weight: 5
+  - prefab: {fileID: 5124642498393798275, guid: 107024a75ccc1044caa04cb0d0696517, type: 3}
+    weight: 5
+  - prefab: {fileID: 5124642498393798275, guid: a65da267a1af7954e8d5348e82f1bb1d, type: 3}
+    weight: 5
+  - prefab: {fileID: 5124642498393798275, guid: 1dcae42c9d682b14099c5b6f1b4660e7, type: 3}
+    weight: 5
+  - prefab: {fileID: 5124642498393798275, guid: 5f59590999f3c494bb2a06862588a35a, type: 3}
+    weight: 5
+  - prefab: {fileID: 5124642498393798275, guid: 7eb518ae458f52245bb8f466c4a6f31f, type: 3}
     weight: 5
   spawnPositionOffset: {x: 0, y: 0}
   spawnInterval: 1
