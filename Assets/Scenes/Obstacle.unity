@@ -131,9 +131,10 @@ GameObject:
   - component: {fileID: 202088982}
   - component: {fileID: 202088981}
   - component: {fileID: 202088984}
+  - component: {fileID: 202088985}
   m_Layer: 0
   m_Name: playerObstacle
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -267,6 +268,33 @@ CapsuleCollider2D:
   m_Offset: {x: 0.40471718, y: -0.08500022}
   m_Size: {x: 2.010566, y: 2.82}
   m_Direction: 0
+--- !u!50 &202088985
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202088980}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,7 +614,7 @@ GameObject:
   - component: {fileID: 1340638952}
   - component: {fileID: 1340638954}
   m_Layer: 0
-  m_Name: Obstacle
+  m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -620,12 +648,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabsToSpawn:
-  - {fileID: 8722366768746292354, guid: 4ff62d92fcb5f0c4e8237e04c50e8e03, type: 3}
-  - {fileID: 2800800157481166545, guid: b0080c97ad5982746b247c126fd5a48b, type: 3}
-  - {fileID: 4330729344999975488, guid: 28e4d45610951474db8d9f1e38ba4ee7, type: 3}
-  - {fileID: 5310898431209338279, guid: 1195721826683344ea8cde5dfce6b87b, type: 3}
+  - prefab: {fileID: 8722366768746292354, guid: 4ff62d92fcb5f0c4e8237e04c50e8e03, type: 3}
+    weight: 5
+  - prefab: {fileID: 2800800157481166545, guid: b0080c97ad5982746b247c126fd5a48b, type: 3}
+    weight: 4
+  - prefab: {fileID: 4330729344999975488, guid: 28e4d45610951474db8d9f1e38ba4ee7, type: 3}
+    weight: 3
+  - prefab: {fileID: 5310898431209338279, guid: 1195721826683344ea8cde5dfce6b87b, type: 3}
+    weight: 0
+  - prefab: {fileID: 5124642498393798275, guid: 107024a75ccc1044caa04cb0d0696517, type: 3}
+    weight: 1
+  - prefab: {fileID: 8646775598842607031, guid: b3c2ed591a90a924bb74e6c7dec0e7ec, type: 3}
+    weight: 5
+  obstacleTransform: {fileID: 0}
   spawnPositionOffset: {x: 0, y: 0}
-  spawnInterval: 2
+  spawnInterval: 1
 --- !u!1 &1856505421
 GameObject:
   m_ObjectHideFlags: 0

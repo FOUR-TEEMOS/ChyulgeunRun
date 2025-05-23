@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9121310599353078664}
   - component: {fileID: 6629942579900247561}
   - component: {fileID: 1246759366655463163}
-  - component: {fileID: -1475424299768487646}
+  - component: {fileID: -5729664703561623957}
   m_Layer: 0
   m_Name: barricade
   m_TagString: obstacle
@@ -176,8 +176,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4669e8960091cba44957e3369821bb53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
---- !u!114 &-1475424299768487646
+  ItemManager: {fileID: 0}
+--- !u!114 &-5729664703561623957
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

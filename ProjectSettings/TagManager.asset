@@ -6,6 +6,7 @@ TagManager:
   tags:
   - disappear
   - obstacle
+  - item
   layers:
   - Default
   - TransparentFX

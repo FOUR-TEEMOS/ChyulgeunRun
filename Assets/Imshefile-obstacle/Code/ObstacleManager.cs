@@ -2,17 +2,21 @@ using UnityEngine;
 
 public class ObstacleManager : MonoBehaviour
 {
-    public DamageManager DamageManager;
+    public ItemManager ItemManager;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("disappear"))
         {
             Destroy(gameObject);
         }
+        else if (collision.gameObject.CompareTag("Player") && gameObject.CompareTag("item"))
+        {
+            Destroy(gameObject);
+        }
     }
 
-    public int getDamage()
+    public int getAmount()
     {
-        return DamageManager.getDamage(gameObject.name);
+        return ItemManager.getAmount(gameObject.name);
     }
 }
