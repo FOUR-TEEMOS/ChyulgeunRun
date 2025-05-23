@@ -2,13 +2,21 @@ using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-
-public class Spawner : MonoBehaviour
+// This Script is for spawning Items
+//
+// List<WeightedObjects> prefabsToSpawn: gets Prefabs of Items and their Probability Weights from inspector
+//                                       Prefabs of Items and their Probability Weights are given in struct 'WeightedObjects'                              
+//          Vector2 spawnPositionOffset: gets Position for Spawning items from inspector
+//                                       Generally, keep this instance (X: 0, Y: 0)
+//                  float spawnInterval: gets Interval Time for Spawing items
+//                                       It can be changed when time passes or background changes
+//                                       The original setting is 2f     
+//                          float timer: measures how long it's been
+public class ItemSpawner : MonoBehaviour
 {
     public List<WeightedObjects> prefabsToSpawn;
-    public Transform obstacleTransform;
-    public Vector2 spawnPositionOffset;       // 2D 위치 오프셋 (x, y)
-    public float spawnInterval = 2f;           // 스폰 간격
+    public Vector2 spawnPositionOffset;      
+    public float spawnInterval = 2f;          
 
     private float timer = 0f;
 
@@ -49,7 +57,6 @@ public class Spawner : MonoBehaviour
         if (selectedPrefab == null)
             return;
 
-        // 오브젝트 생성
         Vector3 spawnPos = new Vector3(
             transform.position.x + spawnPositionOffset.x,
             transform.position.y + spawnPositionOffset.y,
