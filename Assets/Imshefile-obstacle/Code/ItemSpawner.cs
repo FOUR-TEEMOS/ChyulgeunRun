@@ -62,8 +62,10 @@ public class ItemSpawner : MonoBehaviour
             transform.position.y + spawnPositionOffset.y,
             0f
         );
-
-        GameObject spawned = Instantiate(selectedPrefab, spawnPos, Quaternion.identity);
-        spawned.transform.SetParent(this.transform);
+        if (selectedPrefab != null)
+        {
+            GameObject spawned = Instantiate(selectedPrefab, spawnPos, Quaternion.identity);
+            spawned.transform.SetParent(this.transform);
+        }
     }
 }

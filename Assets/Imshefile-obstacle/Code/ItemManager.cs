@@ -17,7 +17,7 @@ public class ItemManager : MonoBehaviour
     private ItemDataManager ItemDataManager;
     public void Start()
     {
-        ItemDataManager ItemDataManager = GameObject.Find("ItemDataManager").GetComponent<ItemDataManager>();
+        ItemDataManager = GameObject.Find("ItemDataManager").GetComponent<ItemDataManager>();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
