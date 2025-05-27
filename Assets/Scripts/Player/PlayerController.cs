@@ -2,12 +2,15 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private Rigidbody2D rb;
+    private BoxCollider2D coll;
+
+    // 점프 & 슬라이딩 파트
+    [SerializeField] LayerMask groundLayer;
+
     public float runSpeed = 5f;
     public float jumpForce = 7f;
     public float slideDuration = 0.5f;
-
-    private Rigidbody2D rb;
-    private BoxCollider2D coll;
 
     private bool isGrounded = true;
     private bool isSliding = false;
@@ -18,7 +21,17 @@ public class PlayerController : MonoBehaviour
     private Vector2 slideColliderSize = new Vector2(1.35f, 0.7f);  // 슬라이드 시 크기
     private Vector2 slideColliderOffset = new Vector2(0.015f, -0.5f); // 슬라이드 시 위치
 
-    public LayerMask groundLayer;
+    // 패링 파트
+    [SerializeField] GameObject exclamationMark;
+
+    private bool isParrying = false;
+    private bool hasParried = false;
+    public float parryDuration = 0.4f;
+    private float parryTimer = 0f;
+    private bool canParryInput = true;
+    private float xCooldownTimer = 0f;
+    public float xCooldown = 0.5f;  // X키 쿨타임 (연타 방지)
+
 
     void Awake()
     {
@@ -72,9 +85,38 @@ public class PlayerController : MonoBehaviour
         }
 
         // 반격 대응 (X 키)
-        if (Input.GetKeyDown(KeyCode.X))
+        if (isParrying && !hasParried && canParryInput && Input.GetKeyDown(KeyCode.X))
         {
-            // TODO: 타이밍 맞으면 성공, 아니면 실패 처리
+            hasParried = true;
+            ParrySuccess();
+        }
+
+        // 반격 시간 체크
+        if (isParrying)
+        {
+            parryTimer -= Time.deltaTime;
+            if (parryTimer <= 0f && !hasParried)
+            {
+                ParryFail();
+            }
+        }
+        
+        if (Input.GetKeyDown(KeyCode.X) && canParryInput)
+        {
+            canParryInput = false;
+            xCooldownTimer = xCooldown;
+            Debug.Log("X 키 입력됨 (쿨타임 시작)");
+        }
+
+        // X 키 쿨타임
+        if (!canParryInput)
+        {
+            xCooldownTimer -= Time.deltaTime;
+            if (xCooldownTimer <= 0f)
+            {
+                canParryInput = true;
+                Debug.Log("X 키 쿨타임 끝");
+            }
         }
     }
 
@@ -98,12 +140,48 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnCollisionExit2D(Collision2D collision)
+    // 반격 타이밍 시작
+    public void StartParry()
     {
-        // 바닥에서 떨어졌을 때
-        if (((1 << collision.gameObject.layer) & groundLayer) != 0)
-        {
-            isGrounded = false;
-        }
+        if (!canParryInput) return; // 쿨타임 중이면 반격 시도 자체 무효
+
+        isParrying = true;
+        hasParried = false;
+        parryTimer = parryDuration;
+
+        ShowParryWarning();
+        Debug.Log("반격 준비 중!");
+    }
+
+    void ParrySuccess()
+    {
+        isParrying = false;
+        hasParried = false;
+        canParryInput = false;
+        xCooldownTimer = xCooldown;
+
+        HideParryWarning();
+        Debug.Log("반격 성공!");
+    }
+
+    void ParryFail()
+    {
+        isParrying = false;
+        hasParried = false;
+        canParryInput = false;
+        xCooldownTimer = xCooldown;
+
+        HideParryWarning();
+        Debug.Log("반격 실패...");
+    }
+
+    public void ShowParryWarning()
+    {
+        exclamationMark.SetActive(true);
+    }
+
+    public void HideParryWarning()
+    {
+        exclamationMark.SetActive(false);
     }
 }
