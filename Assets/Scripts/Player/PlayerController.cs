@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private BoxCollider2D coll;
 
-    // 점프 & 슬라이딩 파트
+    // 점프 & 슬라이딩 관련
     [SerializeField] LayerMask groundLayer;
 
     public float runSpeed = 5f;
@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 slideColliderSize = new Vector2(1.35f, 0.7f);  // 슬라이드 시 크기
     private Vector2 slideColliderOffset = new Vector2(0.015f, -0.5f); // 슬라이드 시 위치
 
-    // 패링 파트
+    // 패링 관련
     [SerializeField] GameObject exclamationMark;
 
     private bool isParrying = false;
@@ -153,7 +153,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("반격 준비 중!");
     }
 
-    void ParrySuccess()
+    public void ParrySuccess()
     {
         isParrying = false;
         hasParried = false;
@@ -164,7 +164,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("반격 성공!");
     }
 
-    void ParryFail()
+    public void ParryFail()
     {
         isParrying = false;
         hasParried = false;
@@ -172,6 +172,7 @@ public class PlayerController : MonoBehaviour
         xCooldownTimer = xCooldown;
 
         HideParryWarning();
+        GameManager.Instance.TakeMentalDamage(10f);
         Debug.Log("반격 실패...");
     }
 
