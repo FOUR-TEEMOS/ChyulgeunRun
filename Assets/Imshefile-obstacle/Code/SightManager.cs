@@ -1,5 +1,9 @@
 using UnityEngine;
 using System.Collections;
+// This Script is for Managing Sight
+//
+//    GameObject darker: gets object which makes darker form inspetor
+// void sightBothering(): makes window darker
 public class SightManager : MonoBehaviour
 {
     public GameObject darker;

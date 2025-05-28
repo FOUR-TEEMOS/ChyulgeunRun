@@ -68,4 +68,5 @@ public class ItemSpawner : MonoBehaviour
             spawned.transform.SetParent(this.transform);
         }
     }
+
 }
