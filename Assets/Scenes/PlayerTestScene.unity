@@ -246,7 +246,7 @@ MonoBehaviour:
   slideDuration: 0.5
   exclamationMark: {fileID: 203741879}
   parryDuration: 0.4
-  xCooldown: 1
+  xCooldown: 3
 --- !u!50 &458737326
 Rigidbody2D:
   serializedVersion: 5

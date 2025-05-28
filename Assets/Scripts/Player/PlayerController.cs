@@ -143,8 +143,6 @@ public class PlayerController : MonoBehaviour
     // 반격 타이밍 시작
     public void StartParry()
     {
-        if (!canParryInput) return; // 쿨타임 중이면 반격 시도 자체 무효
-
         isParrying = true;
         hasParried = false;
         parryTimer = parryDuration;
