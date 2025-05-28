@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     public Slider hpSlider;
     private float hp = 0f;
     public float maxHp = 100f;
+    public float moveSpeed = 10f;
+    public int protection = 0;
 
     private void Awake()
     {
