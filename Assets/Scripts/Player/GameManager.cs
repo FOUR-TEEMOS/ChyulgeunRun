@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     [Header("정신력")]
     public float maxMental = 100f;
     public float currentMental = 100f;
+    public float mentalDrainRate = 1f; // 초당 정신력 감소량
+
 
     [Header("이동 거리")]
     public float currentDistance = 0f;
@@ -41,7 +43,11 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        UpdateDistance();
+        if (!isGamePaused)
+        {
+            UpdateDistance();
+            DrainMentalOverTime();
+        }
     }
 
     // 정신력 감소
@@ -68,6 +74,13 @@ public class GameManager : MonoBehaviour
         currentMental = Mathf.Clamp(currentMental, 0, maxMental);
         Debug.Log($"정신력 +{amount} -> {currentMental}");
     }
+
+    // 정신력 서서히 감소
+    private void DrainMentalOverTime()
+    {
+        TakeMentalDamage(mentalDrainRate * Time.deltaTime);
+    }
+
 
     // 이동거리 관리리
     public void UpdateDistance()
