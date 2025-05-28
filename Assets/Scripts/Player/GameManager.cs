@@ -4,11 +4,20 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    // 정신력 관련
-    public float maxMental = 100;
-    public float currentMental;
+    [Header("정신력")]
+    public float maxMental = 100f;
+    public float currentMental = 100f;
 
-    // 게임 상태 관련
+    [Header("이동 거리")]
+    public float currentDistance = 0f;
+    public float maxDistance = 100f;  // 전체 목표 거리 (도착 기준선)
+    public float moveSpeed = 1f;
+
+    [Header("게임 속도")]
+    public float baseSpeed = 1f;       // 기본 속도
+    private float speedMultiplier = 1f;  // 아이템 등으로 배속 조정
+
+    [Header("일시정지")]
     public bool isGamePaused;
 
     void Awake()
@@ -28,6 +37,11 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         currentMental = maxMental;
+    }
+
+    void Update()
+    {
+        UpdateDistance();
     }
 
     // 정신력 감소
@@ -53,6 +67,30 @@ public class GameManager : MonoBehaviour
         currentMental += amount;
         currentMental = Mathf.Clamp(currentMental, 0, maxMental);
         Debug.Log($"정신력 +{amount} -> {currentMental}");
+    }
+
+    // 이동거리 관리리
+    public void UpdateDistance()
+    {
+        // 시간 * 속도 = 거리
+        currentDistance += Time.deltaTime * moveSpeed * baseSpeed * speedMultiplier;
+
+        // (선택) 도착하면 거리 고정
+        if (currentDistance >= maxDistance)
+        {
+            currentDistance = maxDistance;
+            // GameClear() 등 호출 가능
+        }
+    }
+
+    public void SetSpeedMultiplier(float multiplier)
+    {
+        speedMultiplier = multiplier;
+    }
+
+    public void ResetSpeedMultiplier()
+    {
+        speedMultiplier = 1f;
     }
 
     // 일시정지
