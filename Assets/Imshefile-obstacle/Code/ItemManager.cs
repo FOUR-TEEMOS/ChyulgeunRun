@@ -15,19 +15,35 @@ using UnityEngine;
 public class ItemManager : MonoBehaviour
 {
     private ItemDataManager ItemDataManager;
+    private SightManager sightManager;
     public void Start()
     {
         ItemDataManager = GameObject.Find("ItemDataManager").GetComponent<ItemDataManager>();
+        sightManager = GameObject.Find("SightManager").GetComponent<SightManager>();
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("disappear"))
         {
             Destroy(gameObject);
         }
-        else if (collision.gameObject.CompareTag("Player") && gameObject.CompareTag("recovery"))
+        else if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
+            int amount = getAmount();
+            if (gameObject.CompareTag("recovery"))
+            {
+                GameManager.Instance.RecoverMental(amount);
+                Destroy(gameObject);
+            }
+            else if (gameObject.CompareTag("obstacle"))
+            {
+                if (gameObject.name == "bugs(Clone)")
+                {
+                    sightManager.sightBothering();
+                }
+                GameManager.Instance.TakeMentalDamage(amount);
+            }
         }
     }
 

@@ -8,6 +8,7 @@ public class SightManager : MonoBehaviour
 {
     public GameObject darker;
     public float duration = 3f;
+    
     public void sightBothering()
     {
         StartCoroutine(ShowDarkerForSeconds(duration));

@@ -16,7 +16,7 @@ public class ItemSpawner : MonoBehaviour
 {
     public List<WeightedObjects> prefabsToSpawn;
     public Vector2 spawnPositionOffset;      
-    public float spawnInterval = 2f;          
+    public float spawnInterval = 3f;          
 
     private float timer = 0f;
 
@@ -62,6 +62,7 @@ public class ItemSpawner : MonoBehaviour
             transform.position.y + spawnPositionOffset.y,
             0f
         );
+        
         if (selectedPrefab != null)
         {
             GameObject spawned = Instantiate(selectedPrefab, spawnPos, Quaternion.identity);

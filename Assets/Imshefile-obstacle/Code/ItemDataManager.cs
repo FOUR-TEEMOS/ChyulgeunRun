@@ -14,29 +14,31 @@ public class ItemDataManager : MonoBehaviour
          switch (item_name)
         {
             // obstacles
-            case "barricade":
-                return -1;
-            case "bugs":
-                return -1;
-            case "do":
-                return -1;
-            case "pickpocket":
-                return -1;
-            case "puddle":
-                return -1;
+            case "barricade(Clone)":
+                return 5;
+            case "bugs(Clone)":
+                return 5;
+            case "do(Clone)":
+                return 5;
+            case "pickpocket(Clone)":
+                return 5;
+            case "puddle(Clone)":
+                return 5;
+            case "jeondan(Clone)":
+                return 5;
             // recovery
-            case "vmcoffee":
-                return +1;
-            case "cvcoffe":
-                return +1;
-            case "pdcoffee":
-                return +1;
-            case "espresso":
-                return +1;
-            case "dclatte":
-                return +1;
-            case "coldbrew":
-                return +1;
+            case "vmcoffee(Clone)":
+                return 3;
+            case "cvcoffe(Clone)":
+                return 3;
+            case "pdcoffee(Clone)":
+                return 1;
+            case "espresso(Clone)":
+                return 1;
+            case "dclatte(Clone)":
+                return 1;
+            case "coldbrew(Clone)":
+                return 1;
         }
         return 0;
     }

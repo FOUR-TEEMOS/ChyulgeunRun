@@ -19,12 +19,13 @@ public class BackgroundManager : MonoBehaviour
 {
     public BackgroundSpawner backgroundSpawner;
     public int i;
+
     public void Start()
     {
         backgroundSpawner = GameObject.Find("BackgroundSpawner").GetComponent<BackgroundSpawner>();
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
+    
+    private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.CompareTag("disappear"))
         {
             backgroundSpawner.SpawnBg(i);

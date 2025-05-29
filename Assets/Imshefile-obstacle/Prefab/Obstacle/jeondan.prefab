@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 2371103413960874630}
   - component: {fileID: 5588094076606122039}
   - component: {fileID: 4117588663849991706}
-  - component: {fileID: 5619863781495353069}
   - component: {fileID: 2003514278794917904}
   - component: {fileID: 1184396279215149386}
+  - component: {fileID: 5619863781495353069}
+  - component: {fileID: -1847696409716846600}
   m_Layer: 0
   m_Name: jeondan
   m_TagString: obstacle
@@ -113,19 +114,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5619863781495353069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4138772627679842418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 016e989742d50c3498826b96942a4e53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
 --- !u!61 &2003514278794917904
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -156,21 +144,21 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.027370214, y: -0.009123087}
+  m_Offset: {x: -0.027370214, y: 0.63105047}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.36, y: 1.72}
+    oldSize: {x: 2.36, y: 3}
     newSize: {x: 2.36, y: 1.72}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.1009674, y: 1.482791}
+  m_Size: {x: 1.1009674, y: 1.463093}
   m_EdgeRadius: 0
 --- !u!50 &1184396279215149386
 Rigidbody2D:
@@ -199,3 +187,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &5619863781495353069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4138772627679842418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 016e989742d50c3498826b96942a4e53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+--- !u!114 &-1847696409716846600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4138772627679842418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4669e8960091cba44957e3369821bb53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

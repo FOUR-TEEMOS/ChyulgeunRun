@@ -54,10 +54,9 @@ public class GameManager : MonoBehaviour
     public void TakeMentalDamage(float amount)
     {
         if (isGamePaused) return;
-
+        
         currentMental -= amount;
         currentMental = Mathf.Clamp(currentMental, 0, maxMental);
-        Debug.Log($"정신력 -{amount} -> {currentMental}");
 
         if (currentMental <= 0)
         {
@@ -72,7 +71,6 @@ public class GameManager : MonoBehaviour
 
         currentMental += amount;
         currentMental = Mathf.Clamp(currentMental, 0, maxMental);
-        Debug.Log($"정신력 +{amount} -> {currentMental}");
     }
 
     // 정신력 서서히 감소

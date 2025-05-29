@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private BoxCollider2D coll;
+    private CapsuleCollider2D coll;
 
     // 점프 & 슬라이딩 관련
     [SerializeField] LayerMask groundLayer;
@@ -14,12 +14,11 @@ public class PlayerController : MonoBehaviour
 
     private bool isGrounded = true;
     private bool isSliding = false;
-    private float slideTimer = 0f;
 
     private Vector2 originalColliderSize;
     private Vector2 originalColliderOffset;
-    private Vector2 slideColliderSize = new Vector2(1.35f, 0.7f);  // 슬라이드 시 크기
-    private Vector2 slideColliderOffset = new Vector2(0.015f, -0.5f); // 슬라이드 시 위치
+    private Vector2 slideColliderSize = new Vector2(1.35f, 0.7f); // 슬라이드 시 크기
+    private Vector2 slideColliderOffset = new Vector2(0f, -1.4f); // 슬라이드 시 위치
 
     // 패링 관련
     [SerializeField] GameObject exclamationMark;
@@ -36,7 +35,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        coll = GetComponent<BoxCollider2D>();
+        coll = GetComponent<CapsuleCollider2D>();
     }
 
     void Start()
@@ -59,7 +58,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z) && isGrounded && !isSliding)
         {
             isSliding = true;
-            slideTimer = slideDuration;
 
             // 콜라이더 작게 변경
             coll.size = slideColliderSize;
@@ -68,20 +66,16 @@ public class PlayerController : MonoBehaviour
             // TODO: 슬라이드 애니메이션 재생
         }
 
-        // 슬라이드 타이머
-        if (isSliding)
+        // 슬라이드 종료 (Z 키에서 손 뗐을 때)
+        if (Input.GetKeyUp(KeyCode.Z) && isSliding)
         {
-            slideTimer -= Time.deltaTime;
-            if (slideTimer <= 0f)
-            {
-                isSliding = false;
+            isSliding = false;
 
-                // 콜라이더 원래대로 복구
-                coll.size = originalColliderSize;
-                coll.offset = originalColliderOffset;
+            // 콜라이더 원래대로 복구
+            coll.size = originalColliderSize;
+            coll.offset = originalColliderOffset;
 
-                // TODO: 달리기 애니메이션 재생
-            }
+            // TODO: 달리기 애니메이션 재생
         }
 
         // 반격 대응 (X 키)

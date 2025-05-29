@@ -121,12 +121,12 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.027623681, y: -3.5592809}
-  m_Size: {x: 2.9449787, y: 1.124364}
+  m_Offset: {x: 0.027623719, y: -3.2279198}
+  m_Size: {x: 2.9449797, y: 1.0339928}
   m_Direction: 1
 --- !u!50 &3890268492667302415
 Rigidbody2D:
