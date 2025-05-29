@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 originalColliderSize;
     private Vector2 originalColliderOffset;
     private Vector2 slideColliderSize = new Vector2(1.35f, 0.7f); // 슬라이드 시 크기
-    private Vector2 slideColliderOffset = new Vector2(0f, -1.4f); // 슬라이드 시 위치
+    private Vector2 slideColliderOffset = new Vector2(0f, -1.45f); // 슬라이드 시 위치
 
     // 패링 관련
     [SerializeField] GameObject exclamationMark;
