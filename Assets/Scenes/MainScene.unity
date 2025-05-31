@@ -1008,7 +1008,7 @@ GameObject:
   - component: {fileID: 898202480}
   - component: {fileID: 898202481}
   - component: {fileID: 898202482}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1322,6 +1322,7 @@ MonoBehaviour:
   moveSpeed: 7
   baseSpeed: 1
   isGamePaused: 0
+  protection: 0
 --- !u!4 &1119918085
 Transform:
   m_ObjectHideFlags: 0
@@ -1853,7 +1854,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 8
   runSpeed: 5
   jumpForce: 12
   slideDuration: 0.5
