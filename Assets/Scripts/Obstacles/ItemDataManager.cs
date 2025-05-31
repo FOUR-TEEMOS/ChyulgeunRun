@@ -9,6 +9,22 @@ using UnityEngine;
 //                                         |   Recovery items - vmcoffee, cvcoffee, pdcoffee, espresso, dclatte, coldbrew
 public class ItemDataManager : MonoBehaviour
 {
+
+    //이름으로 패링장애물 여부 검색.
+    public int getObsType(string item_name)
+    {
+        switch (item_name)
+        {
+            // 패링
+            case "do(Clone)":
+                return 1;
+            case "do":
+                return 1;
+            default:
+                return 0;
+        }
+    }
+
     public int getAmount(string item_name)
     {
          switch (item_name)

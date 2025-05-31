@@ -12,15 +12,20 @@ using UnityEngine;
 //              Warning || The Object with this script must have exact NAME in Item Lists
 //                              Item Lists |        Obstacles - barricade, bugs, do, puddle
 //                                         |   Recovery items - coffee
+
+
 public class ItemManager : MonoBehaviour
 {
     private ItemDataManager ItemDataManager;
     private SightManager sightManager;
-    public void Start()
+
+
+    private void Awake()
     {
         ItemDataManager = GameObject.Find("ItemDataManager").GetComponent<ItemDataManager>();
         sightManager = GameObject.Find("SightManager").GetComponent<SightManager>();
     }
+
 
     void OnTriggerEnter2D(Collider2D collision)
     {
