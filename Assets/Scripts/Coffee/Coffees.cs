@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class Coffees : MonoBehaviour
 {
-    protected float upHp;
+    protected float UpMental;
     protected coffeeTypes coffeeType;
     GameObject coffee;
     
@@ -29,10 +29,10 @@ public abstract class Coffees : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            GameManager.instance.Hp += upHp;
+            GameManager.Instance.RecoverMental(UpMental);
             SpecFunction();
             coffee.SetActive(false);
-            Debug.Log($"[{coffeeType} 감지] +{upHp}, Hp = {GameManager.instance.Hp}");
+            Debug.Log($"[{coffeeType} 감지] +{UpMental}, Hp = {GameManager.Instance.currentMental}");
         }
             
     }

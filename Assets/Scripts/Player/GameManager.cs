@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
     [Header("일시정지")]
     public bool isGamePaused;
 
+    [Header("장애물 방어")]
+    public int protection;
+    
     void Awake()
     {
         if (Instance == null)
