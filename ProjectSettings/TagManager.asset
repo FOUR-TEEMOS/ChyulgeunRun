@@ -3,11 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
+  
   tags:
   - disappear
   - obstacle
   - recovery
   - disappearB
+  - newTagFromMerge
+
   layers:
   - Default
   - TransparentFX
