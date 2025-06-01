@@ -2,6 +2,7 @@ using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using System.Collections;
 // This Script is for spawning Items
 //
 // List<WeightedObjects> prefabsToSpawn: gets Prefabs of Items and their Probability Weights from inspector
@@ -15,6 +16,9 @@ using Unity.VisualScripting;
 /*
  * ItemDataManager : getObsType() 추가
 ItemSpawner : 가중치 계산이 한번에 여기서 되는데 일단 분리하기 힘들거같아 Timer 추가, Timer중에 패링 장애물 걸리면 다시돌림
+
+ * _blockRemain 변수 추가 : PdCoffee 전용 타이머. || BlockSpawn() 추가, update 수정
+ * 타이머 > 0 인 동안 장애물 생성 X. * 타이머는 수백개가 아닌 이상 부하가 조금도 가지 않는다고 함...!
  * 
  */
 public class ItemSpawner : MonoBehaviour
@@ -23,7 +27,8 @@ public class ItemSpawner : MonoBehaviour
     public Vector2 spawnPositionOffset;      
     public float spawnInterval = 3f;
     public float paryObsCool = 20f; // 패링 장애물이 다시 나타날 시간
-    public float paryObsTimer = 0f;
+    public float paryObsTimer = 0f; // 패링 장애물 전용 쿨타이머
+    public float _blockRemain = 0f; // PdCoffee 관련 타이머
 
     private float timer = 0f;
     private ItemDataManager ItemDataManager;
@@ -36,13 +41,15 @@ public class ItemSpawner : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer >= spawnInterval)
+        if (timer >= spawnInterval && _blockRemain <= 0f)
         {
             SpawnPrefab();
             timer = 0f;
         }
-        if (paryObsTimer > 0)
+        if (paryObsTimer > 0f)
             paryObsTimer -= Time.deltaTime;
+        if (_blockRemain > 0f)
+            _blockRemain -= Time.deltaTime;
     }
 
     void SpawnPrefab()
@@ -93,6 +100,11 @@ public class ItemSpawner : MonoBehaviour
                 paryObsTimer = paryObsCool;
             }
         }
+    }
+
+    public void BlockSpawn(float time)
+    {
+        _blockRemain += time;
     }
 
 }

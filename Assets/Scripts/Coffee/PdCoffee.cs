@@ -3,22 +3,27 @@ using UnityEngine;
 
 public class Pdcoffee : Coffees
 {
-    // 정신력 +20 + 이동 속도 증가
-    public override void Init()
+    private ItemSpawner itemSpawner;
+
+
+    // 정신력 +20 + 장애물 생성 정지
+    public override void Init() // Awake에서 처리됨
     {
+        itemSpawner = GameObject.Find("Spawner").GetComponent<ItemSpawner>();
         UpMental = 20f;
         coffeeType = coffeeTypes.PdCoffee;
     }
 
-    public override void SpecFunction()
+    private void Awake()
     {
-        StartCoroutine(Timer(10)); // 10초간 이속 상승
+        coffee = this.gameObject;
+        coffee.SetActive(true);
+        Init();
     }
 
-    public IEnumerator Timer(int time) // 시간 동안 이속 상승
+    public override void SpecFunction()
     {
-        GameManager.Instance.moveSpeed += 10f;
-        yield return new WaitForSeconds(time);
-        GameManager.Instance.moveSpeed -= 10f;
+        itemSpawner.BlockSpawn(5f); // 5초동안 장애물 생성 정지
     }
+
 }

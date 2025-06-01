@@ -1561,6 +1561,7 @@ MonoBehaviour:
   spawnInterval: 1
   paryObsCool: 20
   paryObsTimer: 0
+  _blockRemain: 0
 --- !u!1 &1385822195
 GameObject:
   m_ObjectHideFlags: 0

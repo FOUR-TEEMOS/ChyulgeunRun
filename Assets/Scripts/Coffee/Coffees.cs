@@ -4,7 +4,7 @@ public abstract class Coffees : MonoBehaviour
 {
     protected float UpMental;
     protected coffeeTypes coffeeType;
-    GameObject coffee;
+    protected GameObject coffee;
     
     protected enum coffeeTypes
     {
