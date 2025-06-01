@@ -14,14 +14,25 @@ using System.Collections.Generic;
 //
 //                         Bakcground Lists | buildings - 0
 //                                          |     cloud - 1
+//                                          |       sky - 2
 public class BackgroundSpawner : MonoBehaviour
 {
     public List<GameObject> Bg;
-    public Vector3 spawnPosition = new Vector3(20.7f, -0.01181f, 0);
+    public Vector3 spawnPosition;
 
     public void SpawnBg(int i)
     {
-        GameObject spawned = Instantiate(Bg[i], spawnPosition, Quaternion.identity);
-        spawned.transform.SetParent(this.transform);
+        GameObject spawned;
+        if (i == 0)
+        {
+            spawnPosition = new Vector3(38f, 2.746f, 0);
+            spawned = Instantiate(Bg[i], spawnPosition, Quaternion.identity);
+        }
+        else
+        {
+            spawnPosition = new Vector3(38f, 0f, 0f);
+            spawned = Instantiate(Bg[i], spawnPosition, Quaternion.identity);
+        }
+            spawned.transform.SetParent(this.transform);
     }
 }
