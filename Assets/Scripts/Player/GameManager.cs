@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     public bool isGamePaused;
 
     [Header("장애물 방어")]
-    public int protection;
+    public int protection = 0;
     
     void Awake()
     {
@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
     public void RecoverMental(float amount)
     {
         if (isGamePaused) return;
-
+        Debug.Log("회복");
         currentMental += amount;
         currentMental = Mathf.Clamp(currentMental, 0, maxMental);
     }

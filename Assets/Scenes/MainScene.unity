@@ -1559,6 +1559,8 @@ MonoBehaviour:
     weight: 1
   spawnPositionOffset: {x: 0, y: -0.4}
   spawnInterval: 1
+  paryObsCool: 20
+  paryObsTimer: 0
 --- !u!1 &1385822195
 GameObject:
   m_ObjectHideFlags: 0

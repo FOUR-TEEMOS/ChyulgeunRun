@@ -29,7 +29,7 @@ public abstract class Coffees : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            GameManager.Instance.RecoverMental(UpMental);
+            //GameManager.Instance.RecoverMental(UpMental);  //-> itemManager에서 처리 (임시)
             SpecFunction();
             coffee.SetActive(false);
             Debug.Log($"[{coffeeType} 감지] +{UpMental}, Hp = {GameManager.Instance.currentMental}");

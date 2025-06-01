@@ -11,6 +11,8 @@
 
         public override void SpecFunction()
         {
+        
             GameManager.Instance.protection += 1;
-        }
+        Debug.Log($"«¡∑Œ≈ÿº« »πµÊ! «ˆ¿Á {GameManager.Instance.protection}");
+    }
     }

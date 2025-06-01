@@ -43,6 +43,13 @@ public class ItemManager : MonoBehaviour
             }
             else if (gameObject.CompareTag("obstacle"))
             {
+                if(GameManager.Instance.protection > 0)
+                { // protection 있을 경우 패스
+                    
+                    GameManager.Instance.protection -= 1;
+                    Debug.Log($"프로텍션 소모. 현재 {GameManager.Instance.protection}");
+                    return;
+                }
                 if (gameObject.name == "bugs(Clone)")
                 {
                     sightManager.sightBothering();

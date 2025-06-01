@@ -12,6 +12,11 @@ using Unity.VisualScripting;
 //                                       It can be changed when time passes or background changes
 //                                       The original setting is 2f     
 //                          float timer: measures how long it's been
+/*
+ * ItemDataManager : getObsType() 추가
+ItemSpawner : 가중치 계산이 한번에 여기서 되는데 일단 분리하기 힘들거같아 Timer 추가, Timer중에 패링 장애물 걸리면 다시돌림
+ * 
+ */
 public class ItemSpawner : MonoBehaviour
 {
     public List<WeightedObjects> prefabsToSpawn;
@@ -60,7 +65,6 @@ public class ItemSpawner : MonoBehaviour
             if (randomValue <= accumulatedWeight)
             {
                 selectedPrefab = obj.prefab;
-                Debug.Log($"{selectedPrefab.name}을 생성하겠습니다.");
                 if ((ItemDataManager.getObsType(selectedPrefab.name) != 0) && paryObsTimer > 0) // 패링 장애물 쿨타임이 남았는데 패링 장애물이 선택되면 다시돌림
                 {
                     Debug.Log("패링 장애물 쿨타임이 남아 재생성합니다.");
