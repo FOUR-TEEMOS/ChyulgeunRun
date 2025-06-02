@@ -1,5 +1,13 @@
 using UnityEngine;
 
+/* usingSpeedUp 변수 추가 (시간으로 사용)
+ * updateDistance 수정: usingSpeedUp 조건문 추가) 여기서 속도제어
+ * setSpeedmultiplier 수정: 외부에서 usingSpeedUp 시간 조정가능
+ * ResetSpeedmultiplier 삭제
+ * -> 이렇게한 이유: 시간으로 안하면 중복으로 먹었을 때 중간에 끊김
+ * ++ 속도 조정은 Moving 함수에서 진행됨
+ * TakeMentalDamage 수정: 배속 중일때 피해 2배
+ */
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
@@ -18,6 +26,7 @@ public class GameManager : MonoBehaviour
     [Header("게임 속도")]
     public float baseSpeed = 1f;       // 기본 속도
     private float speedMultiplier = 1f;  // 아이템 등으로 배속 조정
+    private float usingSpeedUp = 0f;
 
     [Header("일시정지")]
     public bool isGamePaused;
@@ -57,7 +66,8 @@ public class GameManager : MonoBehaviour
     public void TakeMentalDamage(float amount)
     {
         if (isGamePaused) return;
-        
+        if (usingSpeedUp > 0f) amount *= 2; // 배속 중이면 피해 2배
+
         currentMental -= amount;
         currentMental = Mathf.Clamp(currentMental, 0, maxMental);
 
@@ -86,6 +96,15 @@ public class GameManager : MonoBehaviour
     // 이동거리 관리리
     public void UpdateDistance()
     {
+
+        if (usingSpeedUp > 0f)
+        {
+            speedMultiplier = 2f;
+            usingSpeedUp -= Time.deltaTime;
+        }
+        else
+            speedMultiplier = 1f;
+
         // 시간 * 속도 = 거리
         currentDistance += Time.deltaTime * moveSpeed * baseSpeed * speedMultiplier;
 
@@ -97,14 +116,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SetSpeedMultiplier(float multiplier)
+    // 속도 배속시간 추가
+    public void SetSpeedMultiplier(float time)
     {
-        speedMultiplier = multiplier;
+        Debug.Log($"{time}초 동안 배속 시작!");
+        usingSpeedUp += time;
     }
 
-    public void ResetSpeedMultiplier()
+    public float GetSpeedMultiplier()
     {
-        speedMultiplier = 1f;
+        return speedMultiplier;
     }
 
     // 일시정지

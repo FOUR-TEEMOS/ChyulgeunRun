@@ -12,15 +12,7 @@ public class Espresso : Coffees
 
     public override void SpecFunction()
     {
-        StartCoroutine(Timer(10)); // 10초간 속도 폭주
+        GameManager.Instance.SetSpeedMultiplier(10f);
     }
 
-    public IEnumerator Timer(int time) // 시간 동안 이속 2배
-    {
-        float amount = GameManager.Instance.moveSpeed;
-        
-        GameManager.Instance.moveSpeed += amount;
-        yield return new WaitForSeconds(time);
-        GameManager.Instance.moveSpeed -= amount;
-    }
 }
