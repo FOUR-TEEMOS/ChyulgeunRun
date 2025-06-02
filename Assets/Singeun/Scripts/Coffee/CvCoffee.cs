@@ -7,10 +7,10 @@
         {
             UpMental = 5f;
             coffeeType = coffeeTypes.CvCoffee;
-    }
+        }
 
         public override void SpecFunction()
         {
-            GameManager.Instance.protection += 1;
+            GameManager.Instance.protection = true;
         }
     }

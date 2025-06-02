@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     public bool isGamePaused;
 
     [Header("장애물 방어")]
-    public int protection;
+    public bool protection = false;
     
     void Awake()
     {

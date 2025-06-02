@@ -16,6 +16,7 @@ public class ItemManager : MonoBehaviour
 {
     private ItemDataManager ItemDataManager;
     private SightManager sightManager;
+    
     public void Start()
     {
         ItemDataManager = GameObject.Find("ItemDataManager").GetComponent<ItemDataManager>();
@@ -38,6 +39,18 @@ public class ItemManager : MonoBehaviour
             }
             else if (gameObject.CompareTag("obstacle"))
             {
+                PlayerController pc = collision.gameObject.GetComponent<PlayerController>();
+                if (pc != null && pc.IsParrying())
+                {
+                    Debug.Log("패링 중 → ItemManager는 무시, PlayerController에서 처리");
+                    return;
+                }
+                if (GameManager.Instance.protection == true)
+                {
+                    GameManager.Instance.protection = false;
+                    Debug.Log($"protection 성공");
+                    return;
+                }
                 if (gameObject.name == "bugs(Clone)")
                 {
                     sightManager.sightBothering();
