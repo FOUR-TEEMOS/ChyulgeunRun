@@ -135,7 +135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &8941105
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -203,8 +203,7 @@ Transform:
   m_LocalPosition: {x: 0.007172465, y: 0.33865923, z: 0}
   m_LocalScale: {x: 1.0143236, y: -0.15717317, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 770375999}
+  m_Children: []
   m_Father: {fileID: 967602265}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &770375998
@@ -239,7 +238,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1570565858}
-  m_Father: {fileID: 8941106}
+  m_Father: {fileID: 967602265}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -309,93 +308,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1 &823997710
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 823997712}
-  - component: {fileID: 823997711}
-  m_Layer: 0
-  m_Name: Triangle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!212 &823997711
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 823997710}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 2
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.56078434}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!4 &823997712
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 823997710}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0.07221879, y: -0.1347773, z: -0.498032, w: 0.8535712}
-  m_LocalPosition: {x: 8.91, y: -4.06, z: -0.0023158994}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -14.924, y: -9.42, z: -59.288}
 --- !u!1 &892171043
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,17 +355,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteList:
   - {fileID: -50035154117627066, guid: 6af541a50310a1141b4b9ea5350a8579, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: -3777184159844669818, guid: 6688f98536971874aa3b640082b98b24, type: 3}
+  - {fileID: 7635013726552783190, guid: bddd08f330cfdc94db8168c43eff91e4, type: 3}
+  - {fileID: 5003130031964041364, guid: 40d095196e3eefc4caee2931bdfb5dcf, type: 3}
   - {fileID: 6461893950936953364, guid: 6b9b2cf7e60512445a86224ecf4f09e9, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8713133906901986423, guid: ceefda3e51943d54d95c789be8261f95, type: 3}
+  - {fileID: -1882656570628420134, guid: 9ce386d8cc883d644870ebdcd390ff75, type: 3}
   - {fileID: -2832002258032083281, guid: f1f883cebb869194787d521e12c960e8, type: 3}
   - {fileID: 7347265049222261331, guid: 1a822a5dae7de594db8f14165e35bc3f, type: 3}
-  - {fileID: 0}
+  - {fileID: 5315892637664879472, guid: 3d037f6990755c048b034e8e5074d247, type: 3}
   endingTextLoad: {fileID: 905976804}
-  debug: 8
+  debug: 9
 --- !u!212 &892171046
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -550,32 +462,34 @@ MonoBehaviour:
     - "\uC774\uAC78 365\uC77C \uBC18\uBCF5\uD558\uBA74 \uB098\uAC19\uC774 \uB420
       \uC218 \uC788\uC9C0! \uD06C\uD06C\uD06C"
   - lines:
-    - "\uD558\uD558\uD558! \uB098\uB294 \uCEE4\uB9AC\uC5B4\uC758 \uC2E0!"
-    - "\uC2E0\uC785\uC73C\uB85C \uB4E4\uC5B4\uC628 \uC9C0 \uACE0\uC791 \uBA87\uB144
-      \uB9CC\uC5D0 \uC5F0\uBD09\uC774 10\uBC30\uB098 \uC62C\uB790\uB2E4."
-    - "\uBE44\uACB0\uC774 \uBB50\uB0D0\uACE0?"
-    - "\uB9E4\uC77C \uC544\uCE68 7\uC2DC \uCD9C\uADFC, \uC810\uC2EC\uC740 \uAC00\uBFD0\uD788
-      \uAC70\uB974\uACE0 \uC800\uB141 9\uC2DC \uD1F4\uADFC!"
-    - "\uC774\uAC78 365\uC77C \uBC18\uBCF5\uD558\uBA74 \uB098\uAC19\uC774 \uB420
-      \uC218 \uC788\uC9C0! \uD06C\uD06C\uD06C"
+    - "\uB208\uBD80\uC2DC\uAC8C \uBE5B\uB098\uB294 \uB77C\uC774\uD2B8."
+    - "\uADF8 \uC55E\uC5D0\uB294 \uC774 \uB2EC\uC758 \uC6B0\uC218\uC0AC\uC6D0\uC73C\uB85C
+      \uBF51\uD78C \uB0B4\uAC00 \uC788\uB2E4."
+    - "\uCC30\uCE75 \uCC30\uCE75!"
+    - "\uB9C8\uCE58 \uB0B4 \uB178\uB825\uC774 \uACB0\uC2E4\uC774\uB77C\uB3C4 \uB9FA\uC740
+      \uB4EF \uBAA8\uB450\uAC00 \uB098\uB97C \uC120\uB9DD\uC758 \uB208\uBE5B\uC73C\uB85C
+      \uBC14\uB77C\uBCF8\uB2E4."
+    - "\uBA4B\uC9C4 \uD2B8\uB85C\uD53C\uC640 \uC0C1\uAE08\uC740 \uC88B\uC740 \uACF3\uC5D0
+      \uC4F0\uB3C4\uB85D \uD558\uACA0\uC2B5\uB2C8\uB2E4! ^^"
   - lines:
-    - "\uD558\uD558\uD558! \uB098\uB294 \uCEE4\uB9AC\uC5B4\uC758 \uC2E0!"
-    - "\uC2E0\uC785\uC73C\uB85C \uB4E4\uC5B4\uC628 \uC9C0 \uACE0\uC791 \uBA87\uB144
-      \uB9CC\uC5D0 \uC5F0\uBD09\uC774 10\uBC30\uB098 \uC62C\uB790\uB2E4."
-    - "\uBE44\uACB0\uC774 \uBB50\uB0D0\uACE0?"
-    - "\uB9E4\uC77C \uC544\uCE68 7\uC2DC \uCD9C\uADFC, \uC810\uC2EC\uC740 \uAC00\uBFD0\uD788
-      \uAC70\uB974\uACE0 \uC800\uB141 9\uC2DC \uD1F4\uADFC!"
-    - "\uC774\uAC78 365\uC77C \uBC18\uBCF5\uD558\uBA74 \uB098\uAC19\uC774 \uB420
-      \uC218 \uC788\uC9C0! \uD06C\uD06C\uD06C"
+    - "\uD478\uB978 \uD558\uB298, "
+    - "\uC0C1\uCF8C\uD55C \uACF5\uAE30\uB97C \uB0B4\uB9AC\uB294 \uB9D1\uC740 \uD48D\uACBD. "
+    - "\uC74C\uD760\uD760\uD760\uD760 "
+    - "\uC800\uC808\uB85C \uCF67\uB178\uB798\uAC00 \uB098\uC624\uB294 \uB0A0\uC528\uC774\uB2E4. "
+    - "\uB07C\uC775 \uD558\uB294 \uC18C\uB9AC\uC640 \uD568\uAED8 \uB098\uB294 \uC624\uB298\uC744
+      \uB9CC\uB07D\uD558\uB7EC \uAC00\uBCF4\uB824 \uD55C\uB2E4."
+    - "\uBA3C\uC800 \uB4E4\uC5B4\uAC00\uBCF4\uACA0\uC2B5\uB2C8\uB2E4!"
   - lines:
-    - "\uD558\uD558\uD558! \uB098\uB294 \uCEE4\uB9AC\uC5B4\uC758 \uC2E0!"
-    - "\uC2E0\uC785\uC73C\uB85C \uB4E4\uC5B4\uC628 \uC9C0 \uACE0\uC791 \uBA87\uB144
-      \uB9CC\uC5D0 \uC5F0\uBD09\uC774 10\uBC30\uB098 \uC62C\uB790\uB2E4."
-    - "\uBE44\uACB0\uC774 \uBB50\uB0D0\uACE0?"
-    - "\uB9E4\uC77C \uC544\uCE68 7\uC2DC \uCD9C\uADFC, \uC810\uC2EC\uC740 \uAC00\uBFD0\uD788
-      \uAC70\uB974\uACE0 \uC800\uB141 9\uC2DC \uD1F4\uADFC!"
-    - "\uC774\uAC78 365\uC77C \uBC18\uBCF5\uD558\uBA74 \uB098\uAC19\uC774 \uB420
-      \uC218 \uC788\uC9C0! \uD06C\uD06C\uD06C"
+    - "\uB098\uB978\uD55C \uC624\uD6C4. "
+    - "\uC7A0\uC774 \uC3DF\uC544\uC9C4\uB2E4. "
+    - "\uCEE4\uC5B4\uC5B4\uC5B4\uC5B4\uC5B4"
+    - "\uD478\uC6B0\uC6B0..."
+    - "\uC774\uB807\uAC8C \uD314\uC790\uC88B\uAC8C \uC790\uB2E4\uAC00\uB294 \uC81C
+      \uC2DC\uAC04 \uB0B4\uC5D0 \uC77C\uC744 \uB2E4 \uD558\uC9C0 \uBABB\uD560\uD150\uB370\u2026 "
+    - "\uB108\uBB34\uB098\uB3C4 \uB2EC\uCF64\uD55C \uC7A0\uC5D0 \uB118\uC5B4\uAC00\uBC84\uB9B0
+      \uB098\uB294 \uC815\uC2E0\uC744 \uCC28\uB9B4 \uC218 \uC5C6\uC5C8\uB2E4. "
+    - "\uADF8\uC800 \uC190\uAC00\uB77D\uC73C\uB85C \uD1F4\uADFC\uC758 \u314C\uC744
+      \uAC00\uB9AC\uD0AC \uBFD0\u2026."
   - lines:
     - "\uD0C0\uB2E5\uD0C0\uB2E5.."
     - "\uC5B4\uB450\uC6B4 \uBC29\uC548\uC744 \uD0C0\uC790\uC18C\uB9AC\uB85C \uAC00\uB4DD
@@ -583,26 +497,25 @@ MonoBehaviour:
     - "\uC5B4\uCA50\uC9C0 \uC27D\uC0AC\uB9AC \uC9D1\uC911\uD558\uAE30 \uC5B4\uB824\uC6CC
       \uCC3D \uBC16 \uB108\uBA38 \uC57C\uACBD\uB9CC\uC744 \uBC14\uB77C\uBCF8\uB2E4."
     - "\uD0C0\uB2E5\uD0C0\uB2E5.."
-    - "\uC544\uCE68\uC5D0 \uC870\uAE08\uBBFC \uC77C\uCC0D \uB098\uC654\uB354\uB77C\uBA74..
+    - "\uC544\uCE68\uC5D0 \uC870\uAE08\uB9CC \uC77C\uCC0D \uB098\uC654\uB354\uB77C\uBA74..
       \uB098\uB3C4 \uC774 \uBC24\uC744 \uC990\uAE38 \uC218 \uC788\uC5C8\uC744\uAE4C?"
   - lines:
-    - "\uD558\uD558\uD558! \uB098\uB294 \uCEE4\uB9AC\uC5B4\uC758 \uC2E0!"
-    - "\uC2E0\uC785\uC73C\uB85C \uB4E4\uC5B4\uC628 \uC9C0 \uACE0\uC791 \uBA87\uB144
-      \uB9CC\uC5D0 \uC5F0\uBD09\uC774 10\uBC30\uB098 \uC62C\uB790\uB2E4."
-    - "\uBE44\uACB0\uC774 \uBB50\uB0D0\uACE0?"
-    - "\uB9E4\uC77C \uC544\uCE68 7\uC2DC \uCD9C\uADFC, \uC810\uC2EC\uC740 \uAC00\uBFD0\uD788
-      \uAC70\uB974\uACE0 \uC800\uB141 9\uC2DC \uD1F4\uADFC!"
-    - "\uC774\uAC78 365\uC77C \uBC18\uBCF5\uD558\uBA74 \uB098\uAC19\uC774 \uB420
-      \uC218 \uC788\uC9C0! \uD06C\uD06C\uD06C"
+    - "\uD658\uC790\uBD84..!!! \uC815\uC2E0\uC774 \uC880 \uB4DC\uC2ED\uB2C8\uAE4C!!"
+    - "\uC2DC\uB044\uB7FD\uAC8C \uC6B8\uB9AC\uB294 \uC0AC\uC774\uB80C \uC18C\uB9AC\uAC00
+      \uC9DC\uC99D\uC774 \uB09C\uB2E4."
+    - "\uC774\uAC8C \uBB34\uC2A8 \uC0C1\uD669\uC774\uC9C0? "
+    - "\uBD84\uBA85 \uB098\uB294\u2026 \uCD9C\uADFC\uC744 \uD558\uACE0 \uC788\uC5C8\uB294\uB370?"
+    - "\uC544\uC544...... \uB2E4\uC2DC \uC870\uAE08\uC529 \uB208\uC774 \uAC10\uAE34\uB2E4. "
+    - "\uC774\uB807\uAC8C \uC601\uC6D0\uD788 \uC274 \uC218 \uC788\uB2E4\uBA74 \uCC38
+      \uC88B\uC744\uD150\uB370\u2026"
   - lines:
-    - "\uD558\uD558\uD558! \uB098\uB294 \uCEE4\uB9AC\uC5B4\uC758 \uC2E0!"
-    - "\uC2E0\uC785\uC73C\uB85C \uB4E4\uC5B4\uC628 \uC9C0 \uACE0\uC791 \uBA87\uB144
-      \uB9CC\uC5D0 \uC5F0\uBD09\uC774 10\uBC30\uB098 \uC62C\uB790\uB2E4."
-    - "\uBE44\uACB0\uC774 \uBB50\uB0D0\uACE0?"
-    - "\uB9E4\uC77C \uC544\uCE68 7\uC2DC \uCD9C\uADFC, \uC810\uC2EC\uC740 \uAC00\uBFD0\uD788
-      \uAC70\uB974\uACE0 \uC800\uB141 9\uC2DC \uD1F4\uADFC!"
-    - "\uC774\uAC78 365\uC77C \uBC18\uBCF5\uD558\uBA74 \uB098\uAC19\uC774 \uB420
-      \uC218 \uC788\uC9C0! \uD06C\uD06C\uD06C"
+    - "\uC5F0\uC774\uC740 \uC9C0\uAC01\uACFC \uCEE8\uB514\uC158 \uB09C\uC870..."
+    - "\uACB0\uAD6D \uC774\uB7F0 \uC2DD\uC73C\uB85C \uD68C\uC0AC\uB97C \uB098\uC624\uAC8C
+      \uB420 \uC904\uC740 \uBAB0\uB790\uB2E4."
+    - "\uADF8\uB798\uB3C4 \uC5BC\uB9C8\uB9CC\uC758 \uD734\uC2DD\uC778\uAC00!"
+    - "\uB3CC\uC544\uC624\uB294 \uAE38, \uBD89\uAC8C \uBE5B\uB098\uB294 \uB178\uC744
+      \uC544\uB798 \uB208 \uC55E\uC774 \uCE84\uCE84\uD558\uB2E4. "
+    - "\uB098.. \uC55E\uC73C\uB85C \uC798 \uC0B4\uC544\uAC08 \uC218 \uC788\uACA0\uC9C0?"
   - lines:
     - "\uB354 \uC774\uC0C1 \uAD34\uB85C\uC6B4 \uB9C8\uC74C\uC73C\uB85C \uD558\uB8E8\uD558\uB8E8\uB97C
       \uB0AD\uBE44\uD558\uACE0 \uC2F6\uC9C0 \uC54A\uB2E4."
@@ -624,14 +537,13 @@ MonoBehaviour:
       \uC545\uD654\uB418\uC5C8\uB2E4\uACE0 \uD55C\uB2E4."
     - "\uC544\uBB34\uB798\uB3C4 \uCEE4\uD53C\uB97C \uC880 \uC904\uC5EC\uC57C\uACA0\uB2E4.."
   - lines:
-    - "\uD558\uD558\uD558! \uB098\uB294 \uCEE4\uB9AC\uC5B4\uC758 \uC2E0!"
-    - "\uC2E0\uC785\uC73C\uB85C \uB4E4\uC5B4\uC628 \uC9C0 \uACE0\uC791 \uBA87\uB144
-      \uB9CC\uC5D0 \uC5F0\uBD09\uC774 10\uBC30\uB098 \uC62C\uB790\uB2E4."
-    - "\uBE44\uACB0\uC774 \uBB50\uB0D0\uACE0?"
-    - "\uB9E4\uC77C \uC544\uCE68 7\uC2DC \uCD9C\uADFC, \uC810\uC2EC\uC740 \uAC00\uBFD0\uD788
-      \uAC70\uB974\uACE0 \uC800\uB141 9\uC2DC \uD1F4\uADFC!"
-    - "\uC774\uAC78 365\uC77C \uBC18\uBCF5\uD558\uBA74 \uB098\uAC19\uC774 \uB420
-      \uC218 \uC788\uC9C0! \uD06C\uD06C\uD06C"
+    - "\uC5EC\uB290 \uB54C\uC640 \uAC19\uC774 \uBD84\uC8FC\uD558\uAC8C \uC6C0\uC9C1\uC600\uB2E4."
+    - "\uADF8\uB7EC\uB098 \uBB34\uC2DC\uD560 \uC218 \uC5C6\uB294 \uC704\uD654\uAC10,"
+    - "\uC774 \uC704\uD654\uAC10\uC758 \uC9C4\uC2E4\uC744 \uC54C\uC544\uBC84\uB9B0
+      \uB098\uB294 \uB354\uD560 \uB098\uC704 \uC5C6\uC774 \uC88C\uC808\uD560 \uC218
+      \uBC16\uC5D0 \uC5C6\uC5C8\uB2E4."
+    - "\uD138\uC369..."
+    - "\uC624\uB298 \uD734\uC77C\uC774\uC5C8\uC9C0\u2026."
   typingSpeed: 0.05
   ending: 0
 --- !u!4 &905976805
@@ -734,6 +646,7 @@ Transform:
   m_LocalScale: {x: 19.728224, y: 3.1781216, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 770375999}
   - {fileID: 8941106}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1096,6 +1009,5 @@ SceneRoots:
   - {fileID: 1725091031}
   - {fileID: 892171044}
   - {fileID: 967602265}
-  - {fileID: 823997712}
   - {fileID: 1279259047}
   - {fileID: 905976805}
