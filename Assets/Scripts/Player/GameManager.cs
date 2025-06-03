@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour
     public void SetSpeedMultiplier(float time)
     {
         Debug.Log($"{time}초 동안 배속 시작!");
-        usingSpeedUp += time;
+        usingSpeedUp = time;
     }
 
     public float GetSpeedMultiplier()
