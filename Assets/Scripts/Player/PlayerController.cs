@@ -4,11 +4,11 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
     private CapsuleCollider2D coll;
+    private ItemDataManager itemData;
 
     // 점프 & 슬라이딩 관련
     [SerializeField] LayerMask groundLayer;
 
-    public float runSpeed = 5f; // <- 이거 쓰는 변수맞나요
     public float jumpForce = 7f;
     public float slideDuration = 0.5f;
 
@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<CapsuleCollider2D>();
+        itemData = GameObject.Find("ItemDataManager").GetComponent<ItemDataManager>();
     }
 
     void Start()
@@ -91,10 +92,17 @@ public class PlayerController : MonoBehaviour
             parryTimer -= Time.deltaTime;
             if (parryTimer <= 0f && !hasParried)
             {
-                ParryFail();
+                if (GameManager.Instance.protection == true)
+                {
+                    isParrying = false;
+                    hasParried = false;
+                    HideParryWarning();
+                }
+                else
+                    ParryFail();
             }
         }
-        
+
         if (Input.GetKeyDown(KeyCode.X) && canParryInput)
         {
             canParryInput = false;
@@ -145,6 +153,12 @@ public class PlayerController : MonoBehaviour
         Debug.Log("반격 준비 중!");
     }
 
+    public bool IsParrying()
+    {
+        if (isParrying == true) return true;
+        return false;
+    }
+
     public void ParrySuccess()
     {
         isParrying = false;
@@ -163,8 +177,9 @@ public class PlayerController : MonoBehaviour
         canParryInput = false;
         xCooldownTimer = xCooldown;
 
+        int amount = itemData.getAmount("do(Clone)");
+        GameManager.Instance.TakeMentalDamage(amount);
         HideParryWarning();
-        GameManager.Instance.TakeMentalDamage(10f);
         Debug.Log("반격 실패...");
     }
 
@@ -178,3 +193,5 @@ public class PlayerController : MonoBehaviour
         exclamationMark.SetActive(false);
     }
 }
+
+

@@ -32,8 +32,8 @@ public class GameManager : MonoBehaviour
     public bool isGamePaused;
 
     [Header("장애물 방어")]
-    public int protection = 0;
-    
+    public bool protection = false;
+
     void Awake()
     {
         if (Instance == null)
@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
     public void RecoverMental(float amount)
     {
         if (isGamePaused) return;
-        Debug.Log("회복");
+
         currentMental += amount;
         currentMental = Mathf.Clamp(currentMental, 0, maxMental);
     }
@@ -152,3 +152,5 @@ public class GameManager : MonoBehaviour
         // TODO: 엔딩 화면, 재시작 버튼 등
     }
 }
+
+

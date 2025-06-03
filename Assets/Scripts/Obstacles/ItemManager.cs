@@ -43,10 +43,10 @@ public class ItemManager : MonoBehaviour
             }
             else if (gameObject.CompareTag("obstacle"))
             {
-                if(GameManager.Instance.protection > 0)
+                if(GameManager.Instance.protection == true)
                 { // protection 있을 경우 패스
                     
-                    GameManager.Instance.protection -= 1;
+                    GameManager.Instance.protection = false;
                     Debug.Log($"프로텍션 소모. 현재 {GameManager.Instance.protection}");
                     return;
                 }
