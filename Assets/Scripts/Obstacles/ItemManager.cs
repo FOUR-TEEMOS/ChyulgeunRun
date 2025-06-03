@@ -43,13 +43,19 @@ public class ItemManager : MonoBehaviour
             }
             else if (gameObject.CompareTag("obstacle"))
             {
-                if(GameManager.Instance.protection == true)
-                { // protection 있을 경우 패스
-                    
-                    GameManager.Instance.protection = false;
-                    Debug.Log($"프로텍션 소모. 현재 {GameManager.Instance.protection}");
+                PlayerController pc = collision.gameObject.GetComponent<PlayerController>();
+                if (pc != null && pc.IsParrying())
+                {
+                    Debug.Log("패링 중 → ItemManager는 무시, PlayerController에서 처리");
                     return;
                 }
+                if (GameManager.Instance.protection == true)
+                {
+                    GameManager.Instance.protection = false;
+                    Debug.Log($"protection 성공");
+                    return;
+                }
+
                 if (gameObject.name == "bugs(Clone)")
                 {
                     sightManager.sightBothering();

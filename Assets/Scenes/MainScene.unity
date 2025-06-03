@@ -1538,28 +1538,28 @@ MonoBehaviour:
   - prefab: {fileID: 2800800157481166545, guid: b0080c97ad5982746b247c126fd5a48b, type: 3}
     weight: 1
   - prefab: {fileID: 4330729344999975488, guid: 28e4d45610951474db8d9f1e38ba4ee7, type: 3}
-    weight: 1
+    weight: 5
   - prefab: {fileID: 5310898431209338279, guid: 1195721826683344ea8cde5dfce6b87b, type: 3}
     weight: 0.5
   - prefab: {fileID: 5124642498393798275, guid: 9016ce48517bd65429dccc881faaeb23, type: 3}
-    weight: 1
+    weight: 0
   - prefab: {fileID: 5124642498393798275, guid: 9016ce48517bd65429dccc881faaeb23, type: 3}
-    weight: 1
+    weight: 0
   - prefab: {fileID: 5124642498393798275, guid: 107024a75ccc1044caa04cb0d0696517, type: 3}
-    weight: 1
+    weight: 5
   - prefab: {fileID: 5124642498393798275, guid: a65da267a1af7954e8d5348e82f1bb1d, type: 3}
-    weight: 1
+    weight: 0
   - prefab: {fileID: 5124642498393798275, guid: 1dcae42c9d682b14099c5b6f1b4660e7, type: 3}
-    weight: 1
+    weight: 0
   - prefab: {fileID: 5124642498393798275, guid: 5f59590999f3c494bb2a06862588a35a, type: 3}
-    weight: 1
+    weight: 0
   - prefab: {fileID: 5124642498393798275, guid: 7eb518ae458f52245bb8f466c4a6f31f, type: 3}
-    weight: 1
+    weight: 0
   - prefab: {fileID: 4138772627679842418, guid: 5d5f9c52f436be04e85dea2454fbc4cd, type: 3}
     weight: 1
   spawnPositionOffset: {x: 0, y: -0.4}
   spawnInterval: 1
-  paryObsCool: 20
+  paryObsCool: 1
   paryObsTimer: 0
   _blockRemain: 0
 --- !u!1 &1385822195
@@ -1858,7 +1858,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  runSpeed: 5
   jumpForce: 12
   slideDuration: 0.5
   exclamationMark: {fileID: 203741879}

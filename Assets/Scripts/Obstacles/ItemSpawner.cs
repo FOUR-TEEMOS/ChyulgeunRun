@@ -26,7 +26,7 @@ public class ItemSpawner : MonoBehaviour
     public List<WeightedObjects> prefabsToSpawn;
     public Vector2 spawnPositionOffset;      
     public float spawnInterval = 3f;
-    public float paryObsCool = 1f; // 패링 장애물이 다시 나타날 시간
+    public float paryObsCool = 20f; // 패링 장애물이 다시 나타날 시간
     public float paryObsTimer = 0f; // 패링 장애물 전용 쿨타이머
     public float _blockRemain = 0f; // PdCoffee 관련 타이머
 

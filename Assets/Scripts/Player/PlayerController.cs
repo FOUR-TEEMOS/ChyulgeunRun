@@ -94,6 +94,8 @@ public class PlayerController : MonoBehaviour
             {
                 if (GameManager.Instance.protection == true)
                 {
+                    Debug.Log("protection으로 패링 방어");
+                    GameManager.Instance.protection = false;
                     isParrying = false;
                     hasParried = false;
                     HideParryWarning();
