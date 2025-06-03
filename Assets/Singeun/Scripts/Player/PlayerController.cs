@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     // 점프 & 슬라이딩 관련
     [SerializeField] LayerMask groundLayer;
 
-    public float runSpeed = 5f;
     public float jumpForce = 7f;
     public float slideDuration = 0.5f;
 

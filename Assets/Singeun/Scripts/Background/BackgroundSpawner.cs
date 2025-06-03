@@ -25,14 +25,17 @@ public class BackgroundSpawner : MonoBehaviour
         GameObject spawned;
         if (i == 0)
         {
-            spawnPosition = new Vector3(38f, 2.746f, 0);
-            spawned = Instantiate(Bg[i], spawnPosition, Quaternion.identity);
+            spawnPosition = new Vector3(38f, 2.75f, 0);
+        }
+        else if (i == 5)
+        {
+            spawnPosition = new Vector3(18f, -2.1f, 0f);
         }
         else
         {
             spawnPosition = new Vector3(38f, 0f, 0f);
-            spawned = Instantiate(Bg[i], spawnPosition, Quaternion.identity);
         }
+            spawned = Instantiate(Bg[i], spawnPosition, Quaternion.identity);
             spawned.transform.SetParent(this.transform);
     }
 }
