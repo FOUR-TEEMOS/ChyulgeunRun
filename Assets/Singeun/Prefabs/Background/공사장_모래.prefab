@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 016e989742d50c3498826b96942a4e53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.1
+  speed: 0.5
 --- !u!114 &7109600251932344719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,3 +191,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundSpawner: {fileID: 0}
   i: 4
+  onThisBackgound: 1

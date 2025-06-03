@@ -23,15 +23,19 @@ public class BackgroundSpawner : MonoBehaviour
     public void SpawnBg(int i)
     {
         GameObject spawned;
-        if (i == 0)
+        if (i == 0) // 기본 : 빌딩
         {
             spawnPosition = new Vector3(38f, 2.75f, 0);
         }
-        else if (i == 5)
+        else if (i == 3 || i == 4 || i == 6) // 공사장 : 배경, 모래, 크레인
+        {
+            spawnPosition = new Vector3(18f, 0f, 0f);
+        }
+        else if (i == 5) // 공사장 : 공사물
         {
             spawnPosition = new Vector3(18f, -2.1f, 0f);
         }
-        else
+        else // 기본 : 배경, 구름
         {
             spawnPosition = new Vector3(38f, 0f, 0f);
         }
