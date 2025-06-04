@@ -12,7 +12,7 @@ public class Espresso : Coffees
 
     public override void SpecFunction()
     {
-        GameManager.Instance.SetSpeedMultiplier(10f);
+        GameManager.Instance.SetSpeedMultiplier(10f, 2f, 0);
     }
 
 }

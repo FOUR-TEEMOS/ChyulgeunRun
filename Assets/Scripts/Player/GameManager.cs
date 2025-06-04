@@ -27,12 +27,14 @@ public class GameManager : MonoBehaviour
     public float baseSpeed = 1f;       // 기본 속도
     private float speedMultiplier = 1f;  // 아이템 등으로 배속 조정
     private float usingSpeedUp = 0f;
+    private float usingSpeedUpAmount = 1f;
 
     [Header("일시정지")]
     public bool isGamePaused;
 
     [Header("장애물 방어")]
     public bool protection = false;
+    public bool superProtection = false; // 이건 이벤트:1번 관련변수
 
     void Awake()
     {
@@ -99,10 +101,11 @@ public class GameManager : MonoBehaviour
 
         if (usingSpeedUp > 0f)
         {
-            speedMultiplier = 2f;
+            speedMultiplier = usingSpeedUpAmount;
             usingSpeedUp -= Time.deltaTime;
         }
         else
+            superProtection = false;
             speedMultiplier = 1f;
 
         // 시간 * 속도 = 거리
@@ -116,11 +119,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // 속도 배속시간 추가
-    public void SetSpeedMultiplier(float time)
+    // 속도 배속시간 추가 (type 0: 일반, type 1: 무적)
+    public void SetSpeedMultiplier(float time, float speed, int type)
     {
-        Debug.Log($"{time}초 동안 배속 시작!");
+        Debug.Log($"{time}초 동안 {speed}배속 시작!");
+        usingSpeedUpAmount = speed;
         usingSpeedUp = time;
+        superProtection = false;
+        if (type == 1)
+            superProtection = true;
     }
 
     public float GetSpeedMultiplier()

@@ -49,7 +49,8 @@ public class ItemManager : MonoBehaviour
                     Debug.Log("패링 중 → ItemManager는 무시, PlayerController에서 처리");
                     return;
                 }
-                if (GameManager.Instance.protection == true)
+                if (GameManager.Instance.protection == true ||
+                    GameManager.Instance.superProtection == true)
                 {
                     GameManager.Instance.protection = false;
                     Debug.Log($"protection 성공");

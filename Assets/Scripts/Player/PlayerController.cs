@@ -92,7 +92,8 @@ public class PlayerController : MonoBehaviour
             parryTimer -= Time.deltaTime;
             if (parryTimer <= 0f && !hasParried)
             {
-                if (GameManager.Instance.protection == true)
+                if (GameManager.Instance.protection == true ||
+                    GameManager.Instance.superProtection == true)
                 {
                     Debug.Log("protection으로 패링 방어");
                     GameManager.Instance.protection = false;
