@@ -105,8 +105,10 @@ public class GameManager : MonoBehaviour
             usingSpeedUp -= Time.deltaTime;
         }
         else
+        {
             superProtection = false;
             speedMultiplier = 1f;
+        }
 
         // 시간 * 속도 = 거리
         currentDistance += Time.deltaTime * moveSpeed * baseSpeed * speedMultiplier;
