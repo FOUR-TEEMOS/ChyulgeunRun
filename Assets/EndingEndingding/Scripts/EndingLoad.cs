@@ -12,6 +12,7 @@ public class EndingLoad : MonoBehaviour
         int ending = endingTextLoad.getEnding();
         Sprite background = spriteList[ending];
         GetComponent<SpriteRenderer>().sprite = background;
+        EndingData.unlockEnding(debug);
     }
     
 }

@@ -365,7 +365,7 @@ MonoBehaviour:
   - {fileID: 7347265049222261331, guid: 1a822a5dae7de594db8f14165e35bc3f, type: 3}
   - {fileID: 5315892637664879472, guid: 3d037f6990755c048b034e8e5074d247, type: 3}
   endingTextLoad: {fileID: 905976804}
-  debug: 9
+  debug: 6
 --- !u!212 &892171046
 SpriteRenderer:
   m_ObjectHideFlags: 0
