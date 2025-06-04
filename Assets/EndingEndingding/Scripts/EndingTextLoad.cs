@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using System.Collections;
 
+// This Script is for managing Ending texts
+//
+//      TextMeshProUGUI dialogueText : gets UI text from inspector
+// List<DialogueGroup> dialogueLines : gets dialogues from inspector for each endings
+//                        int ending : saves ending by EndingLoad
+//                                     This script provides setter and getter for the ending value
 public class EndingTextLoad : MonoBehaviour
 {
     public TextMeshProUGUI dialogueText;                // UI Text (¶Ç´Â TextMeshProUGUI)
