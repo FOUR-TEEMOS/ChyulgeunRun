@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 // This Script is for managing setting Ending sprites
@@ -9,6 +10,7 @@ using UnityEngine.UI;
 //                 The meaning of a origin sprites is the unlocked Ending sprites
 //  Image ending : gets Image object from inspector
 //                 This is for setting images of this object finally
+// void Onclicked() : load Scene EndingScene if this Ending was unlocked when on clicked 
 public class SetEndingPicture : MonoBehaviour
 {
     public Sprite defaul;
@@ -26,5 +28,15 @@ public class SetEndingPicture : MonoBehaviour
         {
             ending.sprite = origin;
         }
+    }
+
+    public void Onclicked()
+    {
+        if (EndingData.getEndingData(gameObject.name) == 1)
+        {
+            PlayerPrefs.SetInt("thisEnding", int.Parse(gameObject.name));
+            SceneManager.LoadScene("EndingScene");
+        }
+        return;
     }
 }

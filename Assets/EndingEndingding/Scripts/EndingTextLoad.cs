@@ -38,6 +38,7 @@ public class EndingTextLoad : MonoBehaviour
             }
             else
             {
+                PlayerPrefs.SetInt("thisEnding", -1);
                 SceneManager.LoadScene("EndingListsScene");
             }
         }
