@@ -31,28 +31,41 @@ public class BackgroundSpawner : MonoBehaviour
 {
     public List<BackgroundPrefabPosition> Bg;
     public Vector3 spawnPosition;
+    private SpriteRenderer sr;
 
     public void SpawnBg(int i)
     {
-        GameObject spawned;
         spawnPosition = Bg[i].pos;
-        // if (i == 0) // 기본 : 빌딩
-        // {
-        //     spawnPosition = new Vector3(38f, 2.75f, 0);
-        // }
-        // else if (i == 3 || i == 4 || i == 6) // 공사장 : 배경, 모래, 크레인
-        // {
-        //     spawnPosition = new Vector3(18f, 0f, 0f);
-        // }
-        // else if (i == 5) // 공사장 : 공사물
-        // {
-        //     spawnPosition = new Vector3(18f, -2.1f, 0f);
-        // }
-        // else // 기본 : 배경, 구름
-        // {
-        //     spawnPosition = new Vector3(38f, 0f, 0f);
-        // }
-        spawned = Instantiate(Bg[i].prefab, spawnPosition, Quaternion.identity);
+        GameObject spawned = Instantiate(Bg[i].prefab, spawnPosition, Quaternion.identity);
         spawned.transform.SetParent(this.transform);
+
+        // 현재 메인 배경은 Layer 올리기
+        sr = spawned.GetComponentInChildren<SpriteRenderer>();
+        int currentOrder = sr.sortingOrder;
+        int newOrder = currentOrder;
+        if (currentOrder == 0) newOrder = 3;    // 하늘 레이어
+        else if (currentOrder == 1) newOrder = 4; // 구름/모래 레이어
+        else if(currentOrder == 2) newOrder = 5;                      // 구조물 레이어
+
+        sr.sortingOrder = newOrder;
+    }
+
+    public void StopCurrentBackgrounds()
+    {
+        for (int i = this.transform.childCount - 1; i >= 0; i--)
+        {
+            BackgroundManager bgManager = this.transform.GetChild(i).gameObject.GetComponent<BackgroundManager>();
+            bgManager.isOn = false;
+
+            // 이제 안 쓰는 배경은 Layer 낮추기
+            SpriteRenderer bgSR = this.transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>();
+            int currentOrder = bgSR.sortingOrder;
+            int newOrder = currentOrder;
+            if (currentOrder == 3) newOrder = 0; // 하늘
+            else if (currentOrder == 4) newOrder = 1; // 구름 or 모래
+            else if (currentOrder == 5) newOrder = 2; // 구조물들
+
+            bgSR.sortingOrder = newOrder;
+        }
     }
 }
