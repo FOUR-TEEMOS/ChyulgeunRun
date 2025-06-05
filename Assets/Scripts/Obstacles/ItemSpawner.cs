@@ -30,6 +30,9 @@ public class ItemSpawner : MonoBehaviour
     public float paryObsTimer = 0f; // 패링 장애물 전용 쿨타이머
     public float _blockRemain = 0f; // PdCoffee 관련 타이머
 
+    [Header("생성 예정 프리팹")]
+    public GameObject selectedPrefab;
+
     private float timer = 0f;
     private ItemDataManager ItemDataManager;
 
@@ -58,27 +61,30 @@ public class ItemSpawner : MonoBehaviour
         if (num == 0)
             return;
 
-        float totalWeight = 0f;
-        foreach (var obj in prefabsToSpawn)
-            totalWeight += obj.weight;
+        if (selectedPrefab == null)
+        { // 생성할 프리팹이 없으면 새로 설정.
 
-        float randomValue = Random.Range(0f, totalWeight);
-        float accumulatedWeight = 0f;
-        GameObject selectedPrefab = null;
+            float totalWeight = 0f;
+            foreach (var obj in prefabsToSpawn)
+                totalWeight += obj.weight;
 
-        foreach (var obj in prefabsToSpawn)
-        {
-            accumulatedWeight += obj.weight;
-            if (randomValue <= accumulatedWeight)
+            float randomValue = Random.Range(0f, totalWeight);
+            float accumulatedWeight = 0f;
+
+            foreach (var obj in prefabsToSpawn)
             {
-                selectedPrefab = obj.prefab;
-                if ((ItemDataManager.getObsType(selectedPrefab.name) != 0) && paryObsTimer > 0) // 패링 장애물 쿨타임이 남았는데 패링 장애물이 선택되면 다시돌림
+                accumulatedWeight += obj.weight;
+                if (randomValue <= accumulatedWeight)
                 {
-                    Debug.Log("패링 장애물 쿨타임이 남아 재생성합니다.");
-                    SpawnPrefab();
-                    selectedPrefab = null;
+                    selectedPrefab = obj.prefab;
+                    if ((ItemDataManager.getObsType(selectedPrefab.name) != 0) && paryObsTimer > 0) // 패링 장애물 쿨타임이 남았는데 패링 장애물이 선택되면 다시돌림
+                    {
+                        Debug.Log("패링 장애물 쿨타임이 남아 재생성합니다.");
+                        selectedPrefab = null;
+                        SpawnPrefab();
+                    }
+                    break;
                 }
-                break;
             }
         }
 
@@ -100,6 +106,8 @@ public class ItemSpawner : MonoBehaviour
                 paryObsTimer = paryObsCool;
             }
         }
+
+        selectedPrefab = null; // 생성할 프리팹 초기화.
     }
 
     public void BlockSpawn(float time)

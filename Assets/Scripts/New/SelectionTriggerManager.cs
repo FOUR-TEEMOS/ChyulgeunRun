@@ -1,11 +1,14 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SelectionTriggerManager : MonoBehaviour
 {
-    public SelectionTriggerManager Instance { get; private set; }
+    public static SelectionTriggerManager Instance { get; private set; }
     private ItemSpawner itemSpawner;
+    private List<WeightedObjects> coffeePool;
     private float FastRoadGo_timer = 0f;
     private float RainyHurryUp_timer = 0f;
+    private float RainyUmbrella_timer = 0f;
 
     void Awake()
     {
@@ -20,6 +23,11 @@ public class SelectionTriggerManager : MonoBehaviour
             return;
         }
         itemSpawner = GameObject.Find("Spawner").GetComponent<ItemSpawner>();
+
+        coffeePool = new List<WeightedObjects>(); // coffeePool에 커피만 추가하는 과정
+        foreach (var w in itemSpawner.prefabsToSpawn)
+            if (w.prefab.CompareTag("recovery"))
+                coffeePool.Add(w);
     }
 
     // private으로 모두 구현하고 public, case로만 사용가능하게 제작
@@ -37,6 +45,7 @@ public class SelectionTriggerManager : MonoBehaviour
             case 8: RainyUmbrella(); break;
             case 9: SchoolRunFight(); break;
             case 10: NotSchoolRunFight(); break;
+            case 11: SamplingCoffee(); break;
             default: Debug.Log("없는 Selection Trigger"); break;
         }
     }
@@ -66,8 +75,11 @@ public class SelectionTriggerManager : MonoBehaviour
     }
 
     private void WalletOwnerFind()
-    { // 커피 획득 (생성?) + 남은 거리 랜덤 증가
-
+    { // 랜덤 커피를 다음에 스폰(가중치 미적용) + 남은 거리 5% ~ 10% 랜덤 증가
+        int random = Random.Range(0, coffeePool.Count);
+        itemSpawner.selectedPrefab = coffeePool[random].prefab;
+        float ranDistance = Random.Range(GameManager.Instance.maxDistance / 20f, GameManager.Instance.maxDistance / 10f);
+        GameManager.Instance.maxDistance += ranDistance;
     }
 
     private void WalletIgnore()
@@ -76,13 +88,18 @@ public class SelectionTriggerManager : MonoBehaviour
     }
 
     private void RainyHurryUp()
-    { // 10초 간 체력 소모 1.5배 증가 (* Update에서 처리)
+    { // 10초 간 체력 소모 1.5배 증가 (* Update에서 처리), rainy 체크 X
         RainyHurryUp_timer = 10f;
     }
 
     private void RainyUmbrella()
-    { // 물웅덩이 데미지 2배
+    { // 30초 간 물웅덩이 데미지 2배, 선택지 자체가 비올때 등장하므로 rainy 체크 X
+        RainyUmbrella_timer = 30f;
+    }
 
+    public float RainyUmbrellaTimer()
+    {
+        return RainyUmbrella_timer;
     }
 
     private void SchoolRunFight()
@@ -93,6 +110,14 @@ public class SelectionTriggerManager : MonoBehaviour
     private void NotSchoolRunFight()
     { // 커피 자판기 생성
 
+    }
+
+    private void SamplingCoffee()
+    { // 정신력 회복, 50% 확률로 도를 아십니까 붙잡히기(미구현)
+        GameManager.Instance.RecoverMental(50f);
+        float chance = Random.value * 100f; // 0 ~ 100
+        if (chance < 50f) return;
+        // TO DO : 도를 아십니까에 잡히는 것
     }
 
     private void Update()
@@ -110,6 +135,11 @@ public class SelectionTriggerManager : MonoBehaviour
             RainyHurryUp_timer -= Time.deltaTime;
         }
         else GameManager.Instance.mentalDrainRate = 1f;
+
+        if (RainyUmbrella_timer > 0f)
+        {
+            RainyUmbrella_timer -= Time.deltaTime;
+        }
 
     }
 
