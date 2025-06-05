@@ -14,15 +14,17 @@ using UnityEngine.SceneManagement;
 //                                   |           BackButton - StartScene
 public class SceneChanger : MonoBehaviour
 {
-    public void ChangeScene()
+    public void ChangeScenes()
     {
         switch (gameObject.name)
         {
             case "StartButton":
-                SceneManager.LoadScene("Obstacle");
+                //SceneManager.LoadScene("MainScene");
+                ChangeScene.Instance.ChangeTo("StartScene 2");
                 break;
-            case "EndingListsButton":
-                SceneManager.LoadScene("EndingListsScene");
+            case "StartGameButton":
+                //SceneManager.LoadScene("EndingListsScene");
+                ChangeScene.Instance.ChangeTo("MainScene");
                 break;
             case "CharacterListsButton":
                 SceneManager.LoadScene("CharacterListsScene");
