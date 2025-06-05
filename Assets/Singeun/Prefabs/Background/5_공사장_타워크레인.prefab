@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 604576395647420583}
   - component: {fileID: 67515386223890498}
   m_Layer: 0
-  m_Name: "\uACF5\uC0AC\uC7A5_\uD0C0\uC6CC\uD06C\uB808\uC778"
+  m_Name: "5_\uACF5\uC0AC\uC7A5_\uD0C0\uC6CC\uD06C\uB808\uC778"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -190,4 +190,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundSpawner: {fileID: 0}
-  i: 6
+  i: 5

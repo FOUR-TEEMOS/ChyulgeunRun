@@ -15,31 +15,44 @@ using System.Collections.Generic;
 //                         Bakcground Lists | buildings - 0
 //                                          |     cloud - 1
 //                                          |       sky - 2
+
+[System.Serializable]
+public struct BackgroundPrefabPosition
+{
+    [Header("생성할 배경 요소 Prefab")]
+    public GameObject prefab;
+
+    [Header("이 요소가 생성될 위치")]
+    public Vector3 pos;
+}
+
+
 public class BackgroundSpawner : MonoBehaviour
 {
-    public List<GameObject> Bg;
+    public List<BackgroundPrefabPosition> Bg;
     public Vector3 spawnPosition;
 
     public void SpawnBg(int i)
     {
         GameObject spawned;
-        if (i == 0) // 기본 : 빌딩
-        {
-            spawnPosition = new Vector3(38f, 2.75f, 0);
-        }
-        else if (i == 3 || i == 4 || i == 6) // 공사장 : 배경, 모래, 크레인
-        {
-            spawnPosition = new Vector3(18f, 0f, 0f);
-        }
-        else if (i == 5) // 공사장 : 공사물
-        {
-            spawnPosition = new Vector3(18f, -2.1f, 0f);
-        }
-        else // 기본 : 배경, 구름
-        {
-            spawnPosition = new Vector3(38f, 0f, 0f);
-        }
-            spawned = Instantiate(Bg[i], spawnPosition, Quaternion.identity);
-            spawned.transform.SetParent(this.transform);
+        spawnPosition = Bg[i].pos;
+        // if (i == 0) // 기본 : 빌딩
+        // {
+        //     spawnPosition = new Vector3(38f, 2.75f, 0);
+        // }
+        // else if (i == 3 || i == 4 || i == 6) // 공사장 : 배경, 모래, 크레인
+        // {
+        //     spawnPosition = new Vector3(18f, 0f, 0f);
+        // }
+        // else if (i == 5) // 공사장 : 공사물
+        // {
+        //     spawnPosition = new Vector3(18f, -2.1f, 0f);
+        // }
+        // else // 기본 : 배경, 구름
+        // {
+        //     spawnPosition = new Vector3(38f, 0f, 0f);
+        // }
+        spawned = Instantiate(Bg[i].prefab, spawnPosition, Quaternion.identity);
+        spawned.transform.SetParent(this.transform);
     }
 }
