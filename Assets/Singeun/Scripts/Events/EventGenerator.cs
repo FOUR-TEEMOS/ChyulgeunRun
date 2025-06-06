@@ -28,10 +28,10 @@ public class EventGenerator : MonoBehaviour
     public List<EventInfo> eventList = new List<EventInfo>();
 
     [Header("이벤트 유지 배경 시간 (초)")]
-    public float RETURN_TO_DEFAULT_AFTER = 30f;
+    public float RETURN_TO_DEFAULT_AFTER;
 
     [Header("이벤트 재생성 시간 (초)")]
-    public float respawnTime = 60f;
+    public float respawnTime;
 
     private bool hasGenerated = false;
     private Collider2D triggerCollider;
@@ -81,9 +81,9 @@ public class EventGenerator : MonoBehaviour
         // 이벤트 씬을 Additive 모드로 로드
         SceneManager.LoadScene(selected.eventSceneName, LoadSceneMode.Additive);
 
-        // 이벤트 (공사장 돌파한다 == true) 선택 -> 30초 후 기본 배경으로 돌아오기 + eventGenerator 재가동 코루틴 시작
+        // 이벤트 (공사장 돌파한다 == true) 선택 -> 45초 후 기본 배경으로 돌아오기 + eventGenerator 재가동 코루틴 시작
         // 이벤트 (지나간다 == false) 선택 -> 바로 기본 배경 + eventGenerator 재가동 코루틴 시작
-        if (test == true) RETURN_TO_DEFAULT_AFTER = 30f;
+        if (test == true) RETURN_TO_DEFAULT_AFTER = 45f;
         else RETURN_TO_DEFAULT_AFTER = 0f;
         StartCoroutine(RestoreDefaultAfterSeconds(evObj, RETURN_TO_DEFAULT_AFTER));
     }

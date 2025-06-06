@@ -3,29 +3,54 @@ using UnityEngine.UI;
 
 public class UI : MonoBehaviour
 {
+    public enum UIType
+    {
+        Slider,
+        Text
+    }
+
     public enum SliderType
     {
         Mental,
         Distance
     }
 
+    [SerializeField] private UIType ui;
     [SerializeField] private SliderType type;
+    Text myText;
     Slider mySlider;
 
     void Awake()
     {
+        myText = GetComponent<Text>();
         mySlider = GetComponent<Slider>();
     }
 
     void Update()
     {
-        switch (type)
+        switch (ui)
         {
-            case SliderType.Mental:
-                UpdateMentalBar();
+            case UIType.Text:
+                switch (type)
+                {
+                    case SliderType.Mental:
+                        myText.text = string.Format("Mental : {0:F0}", GameManager.Instance.currentMental);
+                        break;
+                    case SliderType.Distance:
+                        myText.text = string.Format("Distance : {0:F0}", GameManager.Instance.maxDistance - GameManager.Instance.currentDistance);
+                        break;
+                }
                 break;
-            case SliderType.Distance:
-                UpdateDistanceBar();
+            case UIType.Slider:
+                switch (type)
+                {
+                    case SliderType.Mental:
+                        UpdateMentalBar();
+                        break;
+                    case SliderType.Distance:
+                        UpdateDistanceBar();
+                        break;
+                }
                 break;
         }
     }

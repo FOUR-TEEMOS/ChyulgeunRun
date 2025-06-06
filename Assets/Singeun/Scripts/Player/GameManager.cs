@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    // 이동거리 관리리
+    // 이동거리 관리
     public void UpdateDistance()
     {
         // 시간 * 속도 = 거리
