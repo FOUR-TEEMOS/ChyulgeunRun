@@ -6,25 +6,25 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/KMJ/Scenes/EventScene1.unity
+    path: Assets/Scene/EventScene/EventScene1.unity
     guid: 09fd168ef63df744789df669e8b0725d
   - enabled: 1
-    path: Assets/KMJ/Scenes/EventScene2.unity
+    path: Assets/Scene/EventScene/EventScene2.unity
     guid: 97a7025583a711f4abf01dbc644fa32b
   - enabled: 1
-    path: Assets/KMJ/Scenes/EventScene3.unity
+    path: Assets/Scene/EventScene/EventScene3.unity
     guid: 712b0568416da4a42a51c8eecd59de3c
   - enabled: 1
-    path: Assets/KMJ/Scenes/EventScene4.unity
+    path: Assets/Scene/EventScene/EventScene4.unity
     guid: 802bcc2fa4b6cb9439852e445d551c9c
   - enabled: 1
-    path: Assets/KMJ/Scenes/EventScene5.unity
+    path: Assets/Scene/EventScene/EventScene5.unity
     guid: 21c424971058e3743baec3d9bd91f1f0
   - enabled: 1
-    path: Assets/KMJ/Scenes/EventScene6.unity
+    path: Assets/Scene/EventScene/EventScene6.unity
     guid: f592ef4a761e84b4ba118e149c6c8d15
   - enabled: 1
-    path: Assets/KMJ/Scenes/GameScene.unity
+    path: Assets/Scene/GameScene.unity
     guid: 589506ebab2bc3f4ca7d28a982c1a772
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
