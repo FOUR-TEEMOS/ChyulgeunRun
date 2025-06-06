@@ -1556,6 +1556,7 @@ MonoBehaviour:
   moveSpeed: 7
   baseSpeed: 1
   isGamePaused: 0
+  caughtTimer: 0
   protection: 0
   superProtection: 0
 --- !u!4 &1119918085
@@ -2920,6 +2921,7 @@ MonoBehaviour:
     eventPrefab: {fileID: 4836873289239249907, guid: e025ac64f62f88640a3d3c4081675c7a, type: 3}
     eventObjectPos: {x: 8, y: -2, z: 0}
     eventSceneName: 
+    consistBackground: 0
 --- !u!114 &1924725056
 MonoBehaviour:
   m_ObjectHideFlags: 0
