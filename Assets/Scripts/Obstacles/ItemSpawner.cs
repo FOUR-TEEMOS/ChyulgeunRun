@@ -34,12 +34,6 @@ public class ItemSpawner : MonoBehaviour
     public GameObject selectedPrefab;
 
     private float timer = 0f;
-    private ItemDataManager ItemDataManager;
-
-    private void Awake()
-    {
-        ItemDataManager = GameObject.Find("ItemDataManager").GetComponent<ItemDataManager>();
-    }
 
     void Update()
     {
@@ -79,7 +73,7 @@ public class ItemSpawner : MonoBehaviour
                     selectedPrefab = obj.prefab;
                     if ((ItemDataManager.getObsType(selectedPrefab.name) != 0) && paryObsTimer > 0) // 패링 장애물 쿨타임이 남았는데 패링 장애물이 선택되면 다시돌림
                     {
-                        Debug.Log("패링 장애물 쿨타임이 남아 재생성합니다.");
+                        Debug.Log("패링 장애물 쿨타임이 남아 다른 장애물로 재생성합니다.");
                         selectedPrefab = null;
                         SpawnPrefab();
                     }

@@ -11,7 +11,7 @@ public class ItemDataManager : MonoBehaviour
 {
 
     //이름으로 패링장애물 여부 검색.
-    public int getObsType(string item_name)
+    public static int getObsType(string item_name)
     {
         switch (item_name)
         {
@@ -25,7 +25,7 @@ public class ItemDataManager : MonoBehaviour
         }
     }
 
-    public int getAmount(string item_name)
+    public static int getAmount(string item_name)
     {
          switch (item_name)
         {

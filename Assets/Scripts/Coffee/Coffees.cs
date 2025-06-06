@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 // 모든 커피들은 이 클래스를 상속받습니다
 public abstract class Coffees : MonoBehaviour
 {

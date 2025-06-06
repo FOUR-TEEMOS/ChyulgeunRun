@@ -177,6 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  defaultSpeed: 1
 --- !u!114 &1330003643719655907
 MonoBehaviour:
   m_ObjectHideFlags: 0

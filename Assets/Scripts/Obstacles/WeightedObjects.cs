@@ -6,5 +6,4 @@ public struct WeightedObjects
 {    
     public GameObject prefab;
     public float weight;  
-    
 }

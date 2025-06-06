@@ -20,9 +20,6 @@ public class BackgroundManager : MonoBehaviour
     public BackgroundSpawner backgroundSpawner;
     public int i;
     public bool isOn = true;
-//    public int thisBackgoundCount = 10;  // 구름 or 먼지같은 오브젝트가 제일 속도가 느려서 제일 마지막에 disappear에 닿음
-    // 구름이 속도가 0.5고 빌딩 속도가 1이면, 구름 한 번 도착할 때 빌딩 2번 도착함
-    // => 총 배경이 나오는 횟수가 정해지면 좋을듯
 
     public void Awake()
     {

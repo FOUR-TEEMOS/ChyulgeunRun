@@ -45,7 +45,7 @@ public class BackgroundSpawner : MonoBehaviour
         int newOrder = currentOrder;
         if (currentOrder == 0) newOrder = 3;    // 하늘 레이어
         else if (currentOrder == 1) newOrder = 4; // 구름/모래 레이어
-        else if(currentOrder == 2) newOrder = 5;                      // 구조물 레이어
+        else if(currentOrder == 2) newOrder = 5; // 구조물 레이어
 
         sr.sortingOrder = newOrder;
     }

@@ -4,7 +4,6 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
     private CapsuleCollider2D coll;
-    private ItemDataManager itemData;
 
     // 점프 & 슬라이딩 관련
     [SerializeField] LayerMask groundLayer;
@@ -36,7 +35,6 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<CapsuleCollider2D>();
-        itemData = GameObject.Find("ItemDataManager").GetComponent<ItemDataManager>();
     }
 
     void Start()
@@ -180,7 +178,7 @@ public class PlayerController : MonoBehaviour
         canParryInput = false;
         xCooldownTimer = xCooldown;
 
-        int amount = itemData.getAmount("do(Clone)");
+        int amount = ItemDataManager.getAmount("do(Clone)");
         GameManager.Instance.TakeMentalDamage(amount);
         HideParryWarning();
         Debug.Log("반격 실패...");
