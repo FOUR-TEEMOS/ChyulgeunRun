@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UI : MonoBehaviour
 {
@@ -17,12 +18,12 @@ public class UI : MonoBehaviour
 
     [SerializeField] private UIType ui;
     [SerializeField] private SliderType type;
-    Text myText;
+    TextMeshProUGUI myText;
     Slider mySlider;
 
     void Awake()
     {
-        myText = GetComponent<Text>();
+        myText = GetComponent<TextMeshProUGUI>();
         mySlider = GetComponent<Slider>();
     }
 
@@ -37,7 +38,7 @@ public class UI : MonoBehaviour
                         myText.text = string.Format("Mental : {0:F0}", GameManager.Instance.currentMental);
                         break;
                     case SliderType.Distance:
-                        myText.text = string.Format("Distance : {0:F0}", GameManager.Instance.maxDistance - GameManager.Instance.currentDistance);
+                        myText.text = string.Format("Remain : {0:F0}m", GameManager.Instance.maxDistance - GameManager.Instance.currentDistance);
                         break;
                 }
                 break;

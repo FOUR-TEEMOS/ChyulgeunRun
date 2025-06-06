@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 
     [Header("이동 거리")]
     public float currentDistance = 0f;
-    public float maxDistance = 100f;  // 전체 목표 거리 (도착 기준선)
+    public float maxDistance = 10000f;  // 전체 목표 거리 (도착 기준선)
     public float moveSpeed = 1f;
 
     [Header("게임 속도")]
