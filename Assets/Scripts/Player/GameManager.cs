@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
     public float currentMental = 100f;
     public float mentalDrainRate = 1f; // 초당 정신력 감소량
 
-
     [Header("이동 거리")]
     public float currentDistance = 0f;
     public float maxDistance = 10000f;  // 전체 목표 거리 (도착 기준선)
@@ -31,6 +30,9 @@ public class GameManager : MonoBehaviour
 
     [Header("일시정지")]
     public bool isGamePaused;
+
+    [Header("스턴 or 붙잡힘")]
+    public float caughtTimer;
 
     [Header("장애물 방어")]
     public bool protection = false;
@@ -62,6 +64,12 @@ public class GameManager : MonoBehaviour
             UpdateDistance();
             DrainMentalOverTime();
         }
+    }
+    
+    // 도를 아십니까에 붙잡힘
+    public void caught(float time)
+    {
+        caughtTimer = time;
     }
 
     // 정신력 감소
@@ -98,6 +106,12 @@ public class GameManager : MonoBehaviour
     // 이동거리 관리
     public void UpdateDistance()
     {
+        if (caughtTimer > 0f)
+        {
+            caughtTimer -= Time.deltaTime;
+            speedMultiplier = 0f;   // 이동 멈춤
+            return;                 
+        }
 
         if (usingSpeedUp > 0f)
         {

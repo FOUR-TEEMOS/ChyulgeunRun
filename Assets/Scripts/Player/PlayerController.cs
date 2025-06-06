@@ -178,6 +178,8 @@ public class PlayerController : MonoBehaviour
         canParryInput = false;
         xCooldownTimer = xCooldown;
 
+        GameManager.Instance.caught(3f);
+
         int amount = ItemDataManager.getAmount("do(Clone)");
         GameManager.Instance.TakeMentalDamage(amount);
         HideParryWarning();
