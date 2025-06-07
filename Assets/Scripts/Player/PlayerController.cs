@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 originalPos;
     private Vector2 originalColliderSize;
     private Vector2 originalColliderOffset;
-    private Vector2 slideColliderSize = new Vector2(1.35f, 0.7f); // 슬라이드 시 크기
+    private Vector2 slideColliderSize = new Vector2(1.35f, 1.9f); // 슬라이드 시 크기
     private Vector2 slideColliderOffset = new Vector2(0f, 0f); // 슬라이드 시 위치
 
     // 패링 관련
@@ -58,11 +58,11 @@ public class PlayerController : MonoBehaviour
         }
 
         // 슬라이드 (Z 키)
-        if (Input.GetKeyDown(KeyCode.Z) && isGrounded && !isSliding && !isCaught)
+        if (Input.GetKeyDown(KeyCode.Z) && isGrounded && !isSliding && !isCaught && !isParrying)
         {
             isSliding = true;
         
-            transform.position = new Vector2(-6.3f, -3.2f);
+            transform.position = new Vector2(-6.3f, -3f);
             // 콜라이더 작게 변경
             coll.size = slideColliderSize;
             coll.offset = slideColliderOffset;
@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // 슬라이드 종료 (Z 키에서 손 뗐을 때)
-        if (Input.GetKeyUp(KeyCode.Z) && isSliding && !isCaught)
+        if (Input.GetKeyUp(KeyCode.Z) && isSliding && !isCaught && !isParrying)
         {
             isSliding = false;
 
@@ -152,7 +152,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("obstacle") && collision.gameObject.name != ("do(Clone)"))
         {
-            anim.SetTrigger("Stun");
+            anim.SetTrigger("Damaged");
         }
     }
 

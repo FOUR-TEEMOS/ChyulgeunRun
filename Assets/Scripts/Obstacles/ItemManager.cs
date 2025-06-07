@@ -40,8 +40,7 @@ public class ItemManager : MonoBehaviour
             }
             else if (gameObject.CompareTag("obstacle"))
             {
-                PlayerController pc = collision.gameObject.GetComponent<PlayerController>();
-                if (pc != null && pc.IsParrying())
+                if (gameObject.name == "do(Clone)")
                 {
                     Debug.Log("패링 중 -> ItemManager는 무시, PlayerController에서 처리");
                     return;
@@ -62,6 +61,7 @@ public class ItemManager : MonoBehaviour
                 {
                     amount *= 2;
                 }
+                Debug.Log("ItemManager에서 데미지");
                 GameManager.Instance.TakeMentalDamage(amount);
             }
         }
