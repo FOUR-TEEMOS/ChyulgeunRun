@@ -13,26 +13,28 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     [Header("정신력")]
-    public float maxMental = 100f;
-    public float currentMental = 100f;
-    public float mentalDrainRate = 1f; // 초당 정신력 감소량
+    public float maxMental;
+    public float currentMental;
+    public float mentalDrainRate; // 초당 정신력 감소량
 
     [Header("이동 거리")]
-    public float currentDistance = 0f;
-    public float maxDistance = 10000f;  // 전체 목표 거리 (도착 기준선)
-    public float moveSpeed = 1f;
+    public float currentDistance;
+    public float maxDistance;  // 전체 목표 거리 (도착 기준선)
+    public float moveSpeed;
 
     [Header("게임 속도")]
-    public float baseSpeed = 1f;       // 기본 속도
-    private float speedMultiplier = 1f;  // 아이템 등으로 배속 조정
-    private float usingSpeedUp = 0f;
-    private float usingSpeedUpAmount = 1f;
+    public float baseSpeed;     // 기본 속도
+    private float speedMultiplier;  // 아이템 등으로 배속 조정
+    private float usingSpeedUp;
+    private float usingSpeedUpAmount;
 
     [Header("일시정지")]
     public bool isGamePaused;
 
     [Header("붙잡힘")]
     public float caughtTimer;
+    // 붙잡힘(Freeze) 상태일 때 true
+    public bool isFrozen = false;
 
     [Header("장애물 방어")]
     public bool protection = false;
@@ -59,11 +61,11 @@ public class GameManager : MonoBehaviour
     {
         maxMental = 100f;
         currentMental = maxMental;
-        mentalDrainRate = 1f;
+        mentalDrainRate = 0.5f;
         currentDistance = 0f;
-        maxDistance = 10000f;  
+        maxDistance = 1500f;  
         moveSpeed = 1f;
-        baseSpeed = 1f;       
+        baseSpeed = 10f;       
         speedMultiplier = 1f;  
         usingSpeedUp = 0f;
         usingSpeedUpAmount = 1f;
@@ -81,12 +83,17 @@ public class GameManager : MonoBehaviour
             UpdateDistance();
             DrainMentalOverTime();
         }
+        if (currentDistance >= maxDistance)
+        {
+            GoalIn();
+        }
     }
-    
+
     // 도를 아십니까에 붙잡힘
     public void caught(float time)
     {
         caughtTimer = time;
+        isFrozen = true;
     }
 
     // 정신력 감소
@@ -100,7 +107,7 @@ public class GameManager : MonoBehaviour
 
         if (currentMental <= 0)
         {
-            GameOver();
+            // 정신력 0 엔딩
         }
     }
 
@@ -184,12 +191,11 @@ public class GameManager : MonoBehaviour
         Debug.Log("게임 재개");
     }
 
-    // 게임 오버
-    private void GameOver()
+    // 회사 도착
+    private void GoalIn()
     {
         PauseGame();
-        Debug.Log("정신력 0 → 게임 오버 연출 트리거");
-        // TODO: 엔딩 화면, 재시작 버튼 등
+        // 회사 도착 엔딩
     }
 }
 

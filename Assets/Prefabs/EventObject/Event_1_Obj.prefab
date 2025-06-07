@@ -148,8 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2a54af26f4fdad4f91c1806711fb991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keepEventDuration: 60
-  respawnTime: 60
+  keepEventDuration: 45
+  respawnTime: 20
   consistBackground: 0
   test: 1
 --- !u!114 &8586386271712918236

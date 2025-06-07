@@ -23,6 +23,7 @@ ItemSpawner : 가중치 계산이 한번에 여기서 되는데 일단 분리하
  */
 public class ItemSpawner : MonoBehaviour
 {
+    [Header("장애물 생성용")]
     public List<WeightedObjects> prefabsToSpawn;
     public Vector2 spawnPositionOffset;      
     public float spawnInterval = 3f;
@@ -32,11 +33,63 @@ public class ItemSpawner : MonoBehaviour
 
     [Header("생성 예정 프리팹")]
     public GameObject selectedPrefab;
-
     private float timer = 0f;
+
+    [Header("커피 생성용")]
+    public GameObject vending_machine;
+    public float cooltime_vending_machine = 60f;
+    private float vendingTimer;
+    public float vendingBlockWindow = 2f; 
+    private float lastVendingTime = -Mathf.Infinity;
+    public GameObject Caffe;
+
+
+    [Header("끝 지점 연출용")]
+    public GameObject companyBuildingPrefab;
+    public float buildingSpawnDistance = 200f;   // 남은 거리 이 값 이하에서 스폰
+    private bool buildingSpawned = false;
+
+    void Start()
+    {
+        vendingTimer = cooltime_vending_machine;
+        lastVendingTime = Time.time - cooltime_vending_machine;
+    }
 
     void Update()
     {
+        if (GameManager.Instance.isFrozen) return; // 붙잡힌 상태
+
+        // =============== 마지막 연출 ====================
+        // 남은 거리 계산
+        float remain = GameManager.Instance.maxDistance - GameManager.Instance.currentDistance;
+
+        // 마지막 연출 트리거
+        if (!buildingSpawned && remain <= buildingSpawnDistance)
+        {
+            buildingSpawned = true;
+            Vector3 spawnPos = new Vector3(24f, 1f, 0f);
+            Instantiate(companyBuildingPrefab, spawnPos, Quaternion.identity, transform); // 회사 건물 생성
+        }
+
+        if (buildingSpawned) return;  // 건물 생성된 이후로는 스폰 로직은 건너뛰기
+
+        // ================= 자판기 스폰 ====================
+        vendingTimer -= Time.deltaTime;
+        if (vendingTimer <= 0f)
+        {
+            Vector3 spawnPos = new Vector3(8f, -1.6f, 0);
+            Instantiate(vending_machine, spawnPos, Quaternion.identity, transform);
+            lastVendingTime = Time.time;
+            vendingTimer = cooltime_vending_machine;
+        }
+        // 자판기 전후 2초 동안은 장애물 스폰 차단
+        float sinceLastVending = Time.time - lastVendingTime;
+        bool blockAfter = sinceLastVending < vendingBlockWindow;      // 스폰 직후 2초
+        bool blockBefore = vendingTimer < vendingBlockWindow;         // 스폰 직전 2초
+        bool vendingBlocking = blockAfter || blockBefore;
+
+
+        // ================= 장애물 스폰 =====================
         timer += Time.deltaTime;
         if (Time.timeScale == 0 || GameManager.Instance.caughtTimer > 0)
         {
@@ -44,11 +97,11 @@ public class ItemSpawner : MonoBehaviour
             return;
         }
 
-        if (timer >= spawnInterval && _blockRemain <= 0f)
-            {
-                SpawnPrefab();
-                timer = 0f;
-            }
+        if (timer >= spawnInterval && _blockRemain <= 0f && !vendingBlocking)
+        {
+            SpawnPrefab();
+            timer = 0f;
+        }
         if (paryObsTimer > 0f)
             paryObsTimer -= Time.deltaTime;
         if (_blockRemain > 0f)

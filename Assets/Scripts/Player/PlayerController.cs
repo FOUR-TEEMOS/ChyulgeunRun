@@ -34,6 +34,9 @@ public class PlayerController : MonoBehaviour
     public float xCooldown = 2f;  // X키 쿨타임 (연타 방지)
     int damageAmount;
 
+    [Header("입장 연출용")]
+    public float remain;
+    public float enterSpeed = 3f;    // 건물로 달려갈 속도
 
     void Awake()
     {
@@ -63,7 +66,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z) && isGrounded && !isSliding && !isCaught && !isParrying)
         {
             isSliding = true;
-        
+
             transform.position = new Vector2(-6.3f, -3f);
             // 콜라이더 작게 변경
             coll.size = slideColliderSize;
@@ -127,6 +130,13 @@ public class PlayerController : MonoBehaviour
                 canParryInput = true;
                 Debug.Log("X 키 쿨타임 끝");
             }
+        }
+
+        remain = GameManager.Instance.maxDistance - GameManager.Instance.currentDistance;
+        // 마지막에 회사 건물 들어가기
+        if (remain < 40f)
+        {
+            transform.Translate(Vector3.right * enterSpeed * Time.deltaTime, Space.World);
         }
     }
 
@@ -224,6 +234,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(3f);  // 붙잡힘 시간
         anim.SetBool("ParryingSuccess", true);
         isCaught = false;
+        GameManager.Instance.isFrozen = false;
     }
 }
 

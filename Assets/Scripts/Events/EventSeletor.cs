@@ -16,16 +16,31 @@ public class EventSeletor : MonoBehaviour
         triggerCollider = GetComponent<Collider2D>();
     }
 
+    void Update()
+    {
+        if (GameManager.Instance.maxDistance - GameManager.Instance.currentDistance < 100f) gameObject.SetActive(false);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (hasSelected) return;
         if (!collision.CompareTag("Player")) return;
 
+        float remain = GameManager.Instance.maxDistance - GameManager.Instance.currentDistance;
         hasSelected = true;
         triggerCollider.enabled = false;
 
+        // 남은 거리가 700m 미만일 때는 0,2번을 제외한 후보 만들기 (공사장, 비옴 제외)
+        List<EventInfo> candidates = new List<EventInfo>();
+        for (int i = 0; i < eventList.Count; i++)
+        {
+            if (remain < 700f && (i == 0 || i == 2))
+                continue;
+            candidates.Add(eventList[i]);
+        }
+
         // 랜덤으로 이벤트 선택
-        int idx = Random.Range(0, eventList.Count);
+        int idx = Random.Range(0, candidates.Count);
         EventInfo selected = eventList[idx];
         Debug.Log($"[EventSelector] 선택된 이벤트: {selected.eventName}");
 
