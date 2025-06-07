@@ -45,7 +45,8 @@ public class BackgroundSpawner : MonoBehaviour
         int newOrder = currentOrder;
         if (currentOrder == 0) newOrder = 3;    // 하늘 레이어
         else if (currentOrder == 1) newOrder = 4; // 구름/모래 레이어
-        else if(currentOrder == 2) newOrder = 5; // 구조물 레이어
+        else if (currentOrder == 2) newOrder = 5; // 구조물 레이어
+        else if (Bg[i].prefab.name == "13_비_비" || Bg[i].prefab.name == "14_비_비2") newOrder = 11; // 비 레이어
 
         sr.sortingOrder = newOrder;
     }

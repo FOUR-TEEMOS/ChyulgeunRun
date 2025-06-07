@@ -38,6 +38,9 @@ public class GameManager : MonoBehaviour
     public bool protection = false;
     public bool superProtection = false; // 이건 이벤트:1번 관련변수
 
+    [Header("날씨")]
+    public bool isRain = false;
+
     void Awake()
     {
         if (Instance == null)
@@ -54,7 +57,21 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        maxMental = 100f;
         currentMental = maxMental;
+        mentalDrainRate = 1f;
+        currentDistance = 0f;
+        maxDistance = 10000f;  
+        moveSpeed = 1f;
+        baseSpeed = 1f;       
+        speedMultiplier = 1f;  
+        usingSpeedUp = 0f;
+        usingSpeedUpAmount = 1f;
+        isGamePaused = false;
+        caughtTimer = 0f;
+        protection = false;
+        superProtection = false;
+        isRain = false;
     }
 
     void Update()

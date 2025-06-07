@@ -27,6 +27,8 @@ public class EventGenerator : MonoBehaviour
     {
         eventInfo = info;
         consistBackground = eventInfo.consistBackground;
+        // 비오는 이벤트면 날씨 = 비온다
+        if (eventInfo.eventName == "비가 옴") GameManager.Instance.isRain = true;
     }
 
     private void Awake()
@@ -49,11 +51,14 @@ public class EventGenerator : MonoBehaviour
         // 이벤트 씬을 Additive 모드로 로드
         SceneManager.LoadScene(eventInfo.eventSceneName, LoadSceneMode.Additive);
 
-        // (공사장 지나간다 == false) 선택 -> 배경 유지
-        if (test == false)
+        // (공사장 돌아간다 == false) 선택 -> 배경 유지
+        // =================================================
+        // 원래 여기에 선택지 값을 넣어서 뒤에 배경 바뀔지 분기
+        // =================================================
+        if (test == false) // 공사장 선택결과 변수 추가
             consistBackground = true;
 
-        // 배경이 바뀌어야 하는 이벤트 (공사장)
+        // 배경이 바뀌어야 하는 이벤트 (공사장을 지나간다 선택)
         if (!consistBackground)
         {
             // 기존 배경 재생성 방지
@@ -68,10 +73,9 @@ public class EventGenerator : MonoBehaviour
 
         if (!consistBackground)
         {
-            // 배경이 바뀌는 이벤트(공사장)은 선택지에 따라 배경 바뀜 / 안 바뀜 이 정해짐
-            // (공사장 돌파한다 == true) 선택 -> 45초 후 기본 배경으로 돌아오기 + eventSelector 재가동 코루틴 시작
-            // (지나간다 == false) 선택 -> 바로 eventSelector 재가동 코루틴 시작
-            if (test == true) keepEventDuration = 45f;
+            // (배경 바뀜 == true) -> 45초 후 기본 배경으로 돌아오기 + eventSelector 재가동 코루틴 시작
+            // (배경 유지 == false) -> 바로 eventSelector 재가동 코루틴 시작
+            if (test == true) keepEventDuration = 60f;
             else keepEventDuration = 0f;
         }
         StartCoroutine(RestoreDefaultAfterSeconds(keepEventDuration));
@@ -79,7 +83,7 @@ public class EventGenerator : MonoBehaviour
 
     private IEnumerator RestoreDefaultAfterSeconds(float keepEventDuration)
     {
-        // 0초 or 30초 기다리기
+        // 0초 or 60초 기다리기
         yield return new WaitForSeconds(keepEventDuration);
 
         // 이벤트용으로 생성했던 배경들 재생성 방지
@@ -92,6 +96,8 @@ public class EventGenerator : MonoBehaviour
             {
                 backgroundSpawner.SpawnBg(i);
             }
+
+            if (GameManager.Instance.isRain) GameManager.Instance.isRain = false;
         }
 
         // 나머지 “respawnTime” 이후 다시 EventSelecotr 시작

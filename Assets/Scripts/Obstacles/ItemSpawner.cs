@@ -63,15 +63,21 @@ public class ItemSpawner : MonoBehaviour
 
         if (selectedPrefab == null)
         { // 생성할 프리팹이 없으면 새로 설정.
-
+            var candidates = new List<WeightedObjects>();
             float totalWeight = 0f;
             foreach (var obj in prefabsToSpawn)
+            {
+                // 'puddle' 은 비 오는 배경에서만 등장
+                if (obj.prefab.name.Contains("puddle") && !GameManager.Instance.isRain)
+                    continue;
+                candidates.Add(obj);
                 totalWeight += obj.weight;
+            }
+            if (totalWeight == 0f) return;
 
             float randomValue = Random.Range(0f, totalWeight);
             float accumulatedWeight = 0f;
-
-            foreach (var obj in prefabsToSpawn)
+            foreach (var obj in candidates)
             {
                 accumulatedWeight += obj.weight;
                 if (randomValue <= accumulatedWeight)

@@ -421,8 +421,8 @@ Transform:
   m_GameObject: {fileID: 293447939}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.6762, y: -0.1472, z: 0}
-  m_LocalScale: {x: 11.971508, y: 9.359518, z: 1}
+  m_LocalPosition: {x: 1.63, y: -0.1472, z: 0}
+  m_LocalScale: {x: 10.224285, y: 9.359518, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1856505422}
@@ -1472,6 +1472,18 @@ MonoBehaviour:
     pos: {x: 18, y: 0, z: 0}
   - prefab: {fileID: 7453225210621801202, guid: 075074245872ca44aad2c6c72760c8b6, type: 3}
     pos: {x: 18, y: 0, z: 0}
+  - prefab: {fileID: 1169467462159553176, guid: 30c67fe2485628a4da84821c56cfe048, type: 3}
+    pos: {x: 18, y: 0, z: 0}
+  - prefab: {fileID: 3579225680502287713, guid: 0a96c9c0ae6f8844494287c4ee406d40, type: 3}
+    pos: {x: 18, y: -1, z: 0}
+  - prefab: {fileID: 8734112570580414273, guid: d00a266523ed4f64cbacfeb431078e43, type: 3}
+    pos: {x: 11.9, y: 0, z: 0}
+  - prefab: {fileID: 4026728551437537348, guid: 7d0101b04a799b0488e3e1112bc62d8a, type: 3}
+    pos: {x: 18, y: 0, z: 0}
+  - prefab: {fileID: 4198486021781521788, guid: 962f1c81def83824086dfcc25fd21d86, type: 3}
+    pos: {x: 18, y: 0, z: 0}
+  - prefab: {fileID: 4198486021781521788, guid: dce2cd607638e9b4a970c88623fd3417, type: 3}
+    pos: {x: 18, y: 0.8, z: 0}
   spawnPosition: {x: 0, y: 0, z: 0}
 --- !u!4 &984323068
 Transform:
@@ -1563,6 +1575,7 @@ MonoBehaviour:
   caughtTimer: 0
   protection: 0
   superProtection: 0
+  isRain: 0
 --- !u!4 &1119918085
 Transform:
   m_ObjectHideFlags: 0
@@ -1862,7 +1875,7 @@ MonoBehaviour:
   - prefab: {fileID: 4330729344999975488, guid: 28e4d45610951474db8d9f1e38ba4ee7, type: 3}
     weight: 1
   - prefab: {fileID: 5310898431209338279, guid: 1195721826683344ea8cde5dfce6b87b, type: 3}
-    weight: 0.5
+    weight: 2
   - prefab: {fileID: 4138772627679842418, guid: 5d5f9c52f436be04e85dea2454fbc4cd, type: 3}
     weight: 1
   - prefab: {fileID: 1927012048645591058, guid: fbfa6b97fe5503c4894edef611f01bfe, type: 3}
@@ -3010,9 +3023,33 @@ MonoBehaviour:
   - eventName: "\uACF5\uC0AC\uC7A5"
     backgroundIndices: 0000000005000000060000000700000008000000
     eventPrefab: {fileID: 4836873289239249907, guid: e025ac64f62f88640a3d3c4081675c7a, type: 3}
-    eventObjectPos: {x: 8, y: -2, z: 0}
+    eventObjectPos: {x: 9, y: -2.5, z: 0}
     eventSceneName: 
     consistBackground: 0
+  - eventName: "\uC9C0\uAC11\uC744 \uC8FC\uC6C0"
+    backgroundIndices: 
+    eventPrefab: {fileID: 4836873289239249907, guid: 076a925fc51f8a843adb05d755f58a26, type: 3}
+    eventObjectPos: {x: 9, y: -3.7, z: 0}
+    eventSceneName: 
+    consistBackground: 1
+  - eventName: "\uBE44\uAC00 \uC634"
+    backgroundIndices: 00000000090000000a0000000b0000000c0000000d0000000e000000
+    eventPrefab: {fileID: 7494437448373569215, guid: 9f4bd18cde03ff549b48d055822d07b0, type: 3}
+    eventObjectPos: {x: 9, y: -2.5, z: 0}
+    eventSceneName: 
+    consistBackground: 0
+  - eventName: "\uD559\uAD50 \uC55E \uC778\uD30C"
+    backgroundIndices: 
+    eventPrefab: {fileID: 1372530854903569492, guid: 9ea802f9d5621b2409231408e4fd32e1, type: 3}
+    eventObjectPos: {x: 15, y: -2.4, z: 0}
+    eventSceneName: 
+    consistBackground: 1
+  - eventName: "\uCEE4\uD53C \uC0D8\uD50C\uB9C1"
+    backgroundIndices: 
+    eventPrefab: {fileID: 6419909723219030766, guid: 9c503d6505f5ec54b9be3b47c0e0f4f5, type: 3}
+    eventObjectPos: {x: 9, y: -2.25, z: 0}
+    eventSceneName: 
+    consistBackground: 1
 --- !u!114 &1924725056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3137,7 +3174,7 @@ Transform:
   m_GameObject: {fileID: 1924725054}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8, y: -2, z: 0}
+  m_LocalPosition: {x: -3.59, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
