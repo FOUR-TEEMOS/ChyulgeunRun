@@ -27,7 +27,7 @@ public class BackgroundManager : MonoBehaviour
     }
     
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.CompareTag("disappear") && isOn) // 여기에 thisBackgoundCount > 0 조건 추가
+        if (collision.gameObject.CompareTag("disappear") && isOn)
         {
             backgroundSpawner.SpawnBg(i);
         }

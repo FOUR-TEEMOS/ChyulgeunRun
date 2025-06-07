@@ -88,7 +88,7 @@ public class EventGenerator : MonoBehaviour
             backgroundSpawner.StopCurrentBackgrounds();
 
             // 기본 배경 스트림을 다시 시작
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 5; i++)
             {
                 backgroundSpawner.SpawnBg(i);
             }
