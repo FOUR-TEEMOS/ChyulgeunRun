@@ -38,13 +38,17 @@ public class ItemSpawner : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if (Time.timeScale == 0 || GameManager.Instance.caughtTimer > 0) return;
+        if (Time.timeScale == 0 || GameManager.Instance.caughtTimer > 0)
+        {
+            timer = 0f;
+            return;
+        }
 
         if (timer >= spawnInterval && _blockRemain <= 0f)
-        {
-            SpawnPrefab();
-            timer = 0f;
-        }
+            {
+                SpawnPrefab();
+                timer = 0f;
+            }
         if (paryObsTimer > 0f)
             paryObsTimer -= Time.deltaTime;
         if (_blockRemain > 0f)
