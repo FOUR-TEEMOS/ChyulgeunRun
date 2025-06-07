@@ -1,23 +1,27 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 // This Script is for Managing Sight
 //
-//    GameObject darker: gets object which makes darker form inspetor
+//    GameObject bugs: gets object which makes darker form inspetor
 // void sightBothering(): makes window darker
 public class SightManager : MonoBehaviour
 {
-    public GameObject darker;
-    public float duration = 3f;
+    public List<GameObject> bugs;
     
     public void sightBothering()
     {
-        StartCoroutine(ShowDarkerForSeconds(duration));
+        StartCoroutine(ShowBugsSequentially());
     }
 
-    IEnumerator ShowDarkerForSeconds(float duration)
+    IEnumerator ShowBugsSequentially()
     {
-        darker.SetActive(true);  // 나타나게 함
-        yield return new WaitForSeconds(duration);  // 3초 대기
-        darker.SetActive(false); // 사라지게 함
+        foreach (var bug in bugs)
+            bug.SetActive(true);
+
+        yield return new WaitForSeconds(3f);
+
+        foreach (var bug in bugs)
+            bug.SetActive(false);
     }
 }
