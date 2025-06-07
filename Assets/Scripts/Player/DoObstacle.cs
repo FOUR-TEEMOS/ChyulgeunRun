@@ -6,6 +6,7 @@ public class DoObstacle : MonoBehaviour
 
     private Transform player;
     private PlayerController playerController;
+
     private bool warningGiven = false;
 
     void Awake()
@@ -19,7 +20,6 @@ public class DoObstacle : MonoBehaviour
         // 플레이어와 일정 거리 이내 접근 시 반격 준비
         if (!warningGiven && Vector2.Distance(transform.position, player.position) < warningDistance)
         {
-            playerController.ShowParryWarning();
             playerController.StartParry();
             warningGiven = true;
         }

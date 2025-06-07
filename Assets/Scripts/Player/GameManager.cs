@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     [Header("일시정지")]
     public bool isGamePaused;
 
-    [Header("스턴 or 붙잡힘")]
+    [Header("붙잡힘")]
     public float caughtTimer;
 
     [Header("장애물 방어")]
