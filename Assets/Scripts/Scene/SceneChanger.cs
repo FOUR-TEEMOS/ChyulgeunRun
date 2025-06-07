@@ -24,7 +24,7 @@ public class SceneChanger : MonoBehaviour
                 break;
             case "StartGameButton":
                 //SceneManager.LoadScene("EndingListsScene");
-                ChangeScene.Instance.ChangeTo("MainScene");
+                ChangeScene.Instance.ChangeTo("GameScene");
                 break;
             case "CharacterListsButton":
                 SceneManager.LoadScene("CharacterListsScene");

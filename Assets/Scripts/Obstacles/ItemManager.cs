@@ -58,7 +58,7 @@ public class ItemManager : MonoBehaviour
                 {
                     sightManager.sightBothering();
                 }
-                if (gameObject.name == "puddle(Clone)" && SelectionTriggerManager.Instance.RainyUmbrellaTimer() > 0f)
+                if ((gameObject.name == "puddle(Clone)") && SelectionTriggerManager.Instance.RainyUmbrellaTimer() > 0f)
                 {
                     amount *= 2;
                 }

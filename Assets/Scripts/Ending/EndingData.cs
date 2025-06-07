@@ -13,6 +13,7 @@ public class EndingData : MonoBehaviour
     {
         string key = "Ending_" + i;
         int j = PlayerPrefs.GetInt(key, 0);
+        Debug.Log($"{key}, {j}");
         PlayerPrefs.Save();
         return j;
     }
@@ -20,6 +21,7 @@ public class EndingData : MonoBehaviour
     static public void unlockEnding(int i)
     {
         string key = "Ending_" + i;
+        Debug.Log(key);
         PlayerPrefs.SetInt(key, 1);
         PlayerPrefs.Save();
     }

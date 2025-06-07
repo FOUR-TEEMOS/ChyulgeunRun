@@ -49,6 +49,8 @@ public class EventGenerator : MonoBehaviour
         // 이벤트 씬을 Additive 모드로 로드
         SceneManager.LoadScene(eventInfo.eventSceneName, LoadSceneMode.Additive);
 
+        //GameManager.Instance.PauseGame(); //임시
+
         // (공사장 지나간다 == false) 선택 -> 배경 유지
         if (test == false)
             consistBackground = true;

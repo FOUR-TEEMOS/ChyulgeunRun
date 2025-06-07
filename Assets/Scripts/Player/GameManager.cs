@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 /* usingSpeedUp 변수 추가 (시간으로 사용)
@@ -11,6 +12,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    private Animator anim;
 
     [Header("정신력")]
     public float maxMental = 100f;
@@ -38,6 +40,12 @@ public class GameManager : MonoBehaviour
     public bool protection = false;
     public bool superProtection = false; // 이건 이벤트:1번 관련변수
 
+    [Header("히든 엔딩 관련 변수")]
+    public int do_HelloTimes = 0;
+    public int coffee_CreateTimes = 0;
+    public int coffee_DrinkTimes = 0;
+
+
     void Awake()
     {
         if (Instance == null)
@@ -50,6 +58,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject); // 중복 방지
             return;
         }
+        anim = GetComponent<Animator>();
     }
 
     void Start()
@@ -170,7 +179,7 @@ public class GameManager : MonoBehaviour
     // 게임 오버
     private void GameOver()
     {
-        PauseGame();
+        //PauseGame();
         Debug.Log("정신력 0 → 게임 오버 연출 트리거");
         // TODO: 엔딩 화면, 재시작 버튼 등
     }

@@ -206,19 +206,20 @@ public class PlayerController : MonoBehaviour
 
         anim.SetBool("Caution", false);
         anim.SetBool("ParryingSuccess", false);
-        isCaught = true;
-        GameManager.Instance.caught(3f);
 
-        StartCoroutine(ResetCaught());
+        StartCoroutine(ResetCaught(3f));
 
+        GameManager.Instance.do_HelloTimes += 1; //추가됨
         int amount = ItemDataManager.getAmount("do(Clone)");
         GameManager.Instance.TakeMentalDamage(amount);
         Debug.Log("반격 실패...");
     }
 
-    private IEnumerator ResetCaught()
+    public IEnumerator ResetCaught(float time)
     {
-        yield return new WaitForSeconds(3f);  // 붙잡힘 시간
+        isCaught = true;
+        GameManager.Instance.caught(3f);
+        yield return new WaitForSeconds(time);  // 붙잡힘 시간
         anim.SetBool("ParryingSuccess", true);
         isCaught = false;
     }

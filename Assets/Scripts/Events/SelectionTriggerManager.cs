@@ -1,10 +1,14 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SelectionTriggerManager : MonoBehaviour
 {
     public static SelectionTriggerManager Instance { get; private set; }
     private ItemSpawner itemSpawner;
+    private PlayerController playerController;
+    private Camera camera;
     private List<WeightedObjects> coffeePool;
     private float FastRoadGo_timer = 0f;
     private float RainyHurryUp_timer = 0f;
@@ -23,6 +27,8 @@ public class SelectionTriggerManager : MonoBehaviour
             return;
         }
         itemSpawner = GameObject.Find("Spawner").GetComponent<ItemSpawner>();
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        camera = Camera.main; // 오류 생기면 :::::::::: 게임씬 아닌 씬은 maincamera 모두 끄기
 
         coffeePool = new List<WeightedObjects>(); // coffeePool에 커피만 추가하는 과정
         foreach (var w in itemSpawner.prefabsToSpawn)
@@ -60,7 +66,7 @@ public class SelectionTriggerManager : MonoBehaviour
 
     private void NotCoffeeDrink()
     { // 위아래 반전
-
+        StartCoroutine(CameraReverse(3f));
     }
 
     private void FastRoadGo()
@@ -113,11 +119,12 @@ public class SelectionTriggerManager : MonoBehaviour
     }
 
     private void SamplingCoffee()
-    { // 정신력 회복, 50% 확률로 도를 아십니까 붙잡히기(미구현)
+    { // 정신력 회복, 50% 확률로 도를 아십니까 붙잡히기
         GameManager.Instance.RecoverMental(50f);
+
         float chance = Random.value * 100f; // 0 ~ 100
         if (chance < 50f) return;
-        // TO DO : 도를 아십니까에 잡히는 것
+        playerController.StartCoroutine(playerController.ResetCaught(3f));
     }
 
     private void Update()
@@ -143,4 +150,10 @@ public class SelectionTriggerManager : MonoBehaviour
 
     }
 
+    IEnumerator CameraReverse(float time)
+    {
+        camera.transform.rotation = Quaternion.Euler(0f, 0f, 180f);
+        yield return new WaitForSeconds(time);
+        camera.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+    }
 }
