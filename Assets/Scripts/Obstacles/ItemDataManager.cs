@@ -20,6 +20,10 @@ public class ItemDataManager : MonoBehaviour
                 return 1;
             case "do":
                 return 1;
+            case "somae(Clone)":
+                return 1;
+            case "somae":
+                return 1;
             default:
                 return 0;
         }
@@ -41,6 +45,12 @@ public class ItemDataManager : MonoBehaviour
             case "puddle(Clone)":
                 return 5;
             case "jeondan(Clone)":
+                return 5;
+            case "trash(Clone)":
+                return 5;
+            case "hole(Clone)":
+                return 5;
+            case "somae(Clone)":
                 return 5;
             // recovery
             case "vmcoffee(Clone)":

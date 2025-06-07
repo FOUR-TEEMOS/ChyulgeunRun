@@ -40,7 +40,7 @@ public class ItemManager : MonoBehaviour
             }
             else if (gameObject.CompareTag("obstacle"))
             {
-                if (gameObject.name == "do(Clone)")
+                if (gameObject.name == "do(Clone)" || gameObject.name == "somae(Clone)")
                 {
                     Debug.Log("패링 중 -> ItemManager는 무시, PlayerController에서 처리");
                     return;

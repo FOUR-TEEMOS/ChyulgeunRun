@@ -1854,7 +1854,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabsToSpawn:
   - prefab: {fileID: 8722366768746292354, guid: 4ff62d92fcb5f0c4e8237e04c50e8e03, type: 3}
-    weight: 2
+    weight: 1
   - prefab: {fileID: 2800800157481166545, guid: b0080c97ad5982746b247c126fd5a48b, type: 3}
     weight: 1
   - prefab: {fileID: 4330729344999975488, guid: 28e4d45610951474db8d9f1e38ba4ee7, type: 3}
@@ -1862,6 +1862,12 @@ MonoBehaviour:
   - prefab: {fileID: 5310898431209338279, guid: 1195721826683344ea8cde5dfce6b87b, type: 3}
     weight: 0.5
   - prefab: {fileID: 4138772627679842418, guid: 5d5f9c52f436be04e85dea2454fbc4cd, type: 3}
+    weight: 1
+  - prefab: {fileID: 1927012048645591058, guid: fbfa6b97fe5503c4894edef611f01bfe, type: 3}
+    weight: 1
+  - prefab: {fileID: 5688792428706481894, guid: 5b91c36902bef6a4b8669463f84c42fa, type: 3}
+    weight: 1
+  - prefab: {fileID: 4356722144787998803, guid: 8c73f8cb446400e4ca85c850cb4bfaff, type: 3}
     weight: 1
   spawnPositionOffset: {x: 0, y: -0.4}
   spawnInterval: 1

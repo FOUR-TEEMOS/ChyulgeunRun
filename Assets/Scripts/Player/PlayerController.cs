@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
     private bool canParryInput = true;
     public float xCooldownTimer = 0f;
     public float xCooldown = 2f;  // X키 쿨타임 (연타 방지)
+    int damageAmount;
 
 
     void Awake()
@@ -150,7 +152,7 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("obstacle") && collision.gameObject.name != ("do(Clone)"))
+        if (collision.gameObject.CompareTag("obstacle") && (collision.gameObject.name != ("do(Clone)") && collision.gameObject.name != ("somae(Clone)")))
         {
             anim.SetTrigger("Damaged");
         }
@@ -211,8 +213,9 @@ public class PlayerController : MonoBehaviour
 
         StartCoroutine(ResetCaught());
 
-        int amount = ItemDataManager.getAmount("do(Clone)");
-        GameManager.Instance.TakeMentalDamage(amount);
+        if(gameObject.name == "do(Clone)") damageAmount = ItemDataManager.getAmount("do(Clone)");
+        else if (gameObject.name == "somae(Clone)") damageAmount = ItemDataManager.getAmount("somae(Clone)");
+        GameManager.Instance.TakeMentalDamage(damageAmount);
         Debug.Log("반격 실패...");
     }
 
