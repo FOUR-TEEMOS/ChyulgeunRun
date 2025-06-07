@@ -56,7 +56,11 @@ public class ItemManager : MonoBehaviour
 
                 if (gameObject.name == "bugs(Clone)")
                 {
-                    sightManager.sightBothering();
+                    sightManager.CoverWithBugs();
+                }
+                if (gameObject.name == "jeondan(Clone)")
+                {
+                    sightManager.CoverWithFlyers();
                 }
                 if (gameObject.name == "puddle(Clone)" && SelectionTriggerManager.Instance.RainyUmbrellaTimer() > 0f)
                 {
