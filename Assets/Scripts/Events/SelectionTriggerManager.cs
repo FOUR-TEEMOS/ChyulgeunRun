@@ -1,10 +1,14 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SelectionTriggerManager : MonoBehaviour
 {
     public static SelectionTriggerManager Instance { get; private set; }
     private ItemSpawner itemSpawner;
+    private PlayerController playerController;
+    private Camera camera;
     private List<WeightedObjects> coffeePool;
     private float FastRoadGo_timer = 0f;
     private float RainyHurryUp_timer = 0f;
@@ -23,6 +27,8 @@ public class SelectionTriggerManager : MonoBehaviour
             return;
         }
         itemSpawner = GameObject.Find("Spawner").GetComponent<ItemSpawner>();
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        camera = Camera.main; // 오류 생기면 :::::::::: 게임씬 아닌 씬은 maincamera 모두 끄기
 
         coffeePool = new List<WeightedObjects>(); // coffeePool에 커피만 추가하는 과정
         foreach (var w in itemSpawner.prefabsToSpawn)
@@ -46,6 +52,7 @@ public class SelectionTriggerManager : MonoBehaviour
             case 9: SchoolRunFight(); break;
             case 10: NotSchoolRunFight(); break;
             case 11: SamplingCoffee(); break;
+            case 12: NonSamplingCoffee(); break;
             default: Debug.Log("없는 Selection Trigger"); break;
         }
     }
@@ -54,32 +61,50 @@ public class SelectionTriggerManager : MonoBehaviour
     private void CoffeeDrink()
     { // 50% 확률로 3초간 속도 3배 & 무적
         float chance = Random.value * 100f; // 0 ~ 100
-        if (chance < 50f) return;
-        GameManager.Instance.SetSpeedMultiplier(3f, 3f, 1);
+        if (chance < 50f)
+        {
+            GameManager.Instance.SetSpeedMultiplier(3f, 3f, 1);
+            Debug.Log("속도3배");
+        }
+        else
+            StartCoroutine(CameraReverse(20f));;
     }
 
     private void NotCoffeeDrink()
     { // 위아래 반전
-
     }
 
     private void FastRoadGo()
-    { // 15초 간 장애물 스폰시간 3초 -> 2초, 남은 거리 10% 감소 (* Update에서 처리)
-        FastRoadGo_timer = 15f;
-        GameManager.Instance.maxDistance -= GameManager.Instance.maxDistance / 10f;
+    { // 45초 간 장애물 스폰시간 3초 -> 2초, 남은 거리 5% 감소 (* Update에서 처리)
+        FastRoadGo_timer = 45f;
+        GameManager.Instance.maxDistance -= GameManager.Instance.maxDistance / 20f;
     }
 
     private void NotFastRoadGo()
     { // 변화 없음
+        // EventGenerator.Instance가 이미 배경을 바꿨다면
+        var eg = EventGenerator.Instance;
+        eg.consistBackground = true;
 
+        // 즉시 공사장 배경 제거
+        eg.backgroundSpawner.StopCurrentBackgrounds();
+        // 기본 배경 다시 깔아 주기
+        for (int i = 0; i < 5; i++)
+            eg.backgroundSpawner.SpawnBg(i);
     }
 
     private void WalletOwnerFind()
-    { // 랜덤 커피를 다음에 스폰(가중치 미적용) + 남은 거리 5% ~ 10% 랜덤 증가
-        int random = Random.Range(0, coffeePool.Count);
-        itemSpawner.selectedPrefab = coffeePool[random].prefab;
-        float ranDistance = Random.Range(GameManager.Instance.maxDistance / 20f, GameManager.Instance.maxDistance / 10f);
-        GameManager.Instance.maxDistance += ranDistance;
+    { // 자판기+ 남은 거리 5%증가
+        if (coffeePool == null || coffeePool.Count == 0)
+        {
+            Debug.LogWarning("[SelectionTrigger] coffeePool is empty → WalletOwnerFind skipped");
+            return;
+        }
+
+        // 능력 커피 생성 구현 필요
+        itemSpawner.SpawnCaffe();
+
+        GameManager.Instance.maxDistance += GameManager.Instance.maxDistance / 20f;
     }
 
     private void WalletIgnore()
@@ -109,22 +134,28 @@ public class SelectionTriggerManager : MonoBehaviour
 
     private void NotSchoolRunFight()
     { // 커피 자판기 생성
-
+        itemSpawner.SpawnVendingMachine();
     }
 
     private void SamplingCoffee()
-    { // 정신력 회복, 50% 확률로 도를 아십니까 붙잡히기(미구현)
-        GameManager.Instance.RecoverMental(50f);
+    { // 정신력 회복, 50% 확률로 도를 아십니까 붙잡히기
+        GameManager.Instance.RecoverMental(20f);
+
         float chance = Random.value * 100f; // 0 ~ 100
         if (chance < 50f) return;
-        // TO DO : 도를 아십니까에 잡히는 것
+        playerController.StartCoroutine(playerController.ResetCaught());
+    }
+    
+    private void NonSamplingCoffee()
+    {
+
     }
 
     private void Update()
     {
         if (FastRoadGo_timer > 0f)
         {
-            itemSpawner.spawnInterval = 2f;
+            itemSpawner.spawnInterval = 1.5f;
             FastRoadGo_timer -= Time.deltaTime;
         }
         else itemSpawner.spawnInterval = 3f;
@@ -143,4 +174,10 @@ public class SelectionTriggerManager : MonoBehaviour
 
     }
 
+    IEnumerator CameraReverse(float time)
+    {
+        camera.transform.rotation = Quaternion.Euler(0f, 0f, 180f);
+        yield return new WaitForSeconds(time);
+        camera.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+    }
 }

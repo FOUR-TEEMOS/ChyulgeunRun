@@ -9,13 +9,19 @@ public class Pdcoffee : Coffees
     public override void Init() // Awake에서 처리됨
     {
         itemSpawner = GameObject.Find("Spawner").GetComponent<ItemSpawner>();
-        UpMental = 20f;
+        UpMental = 15f;
         coffeeType = coffeeTypes.PdCoffee;
     }
 
     public override void SpecFunction()
     {
-        itemSpawner.BlockSpawn(5f); // 5초동안 장애물 생성 정지
+        GameManager.Instance.RecoverMental(UpMental);
+        itemSpawner.BlockSpawn(10f); // 10초동안 장애물 생성 정지
+    }
+
+    public override string ExplainDetail()
+    {
+        return "정신력 +15 회복\n장애물 생성 일시정지";
     }
 
 }

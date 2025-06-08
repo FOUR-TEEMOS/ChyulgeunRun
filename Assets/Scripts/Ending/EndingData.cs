@@ -19,6 +19,7 @@ public class EndingData : MonoBehaviour
 
     static public void unlockEnding(int i)
     {
+        Debug.Log(i);
         string key = "Ending_" + i;
         PlayerPrefs.SetInt(key, 1);
         PlayerPrefs.Save();

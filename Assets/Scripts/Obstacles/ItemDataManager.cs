@@ -53,17 +53,11 @@ public class ItemDataManager : MonoBehaviour
             case "somae(Clone)":
                 return 5;
             // recovery
-            case "vmcoffee(Clone)":
-                return 3;
             case "cvcoffe(Clone)":
                 return 3;
             case "pdcoffee(Clone)":
                 return 1;
             case "espresso(Clone)":
-                return 1;
-            case "dclatte(Clone)":
-                return 1;
-            case "coldbrew(Clone)":
                 return 1;
         }
         return 0;

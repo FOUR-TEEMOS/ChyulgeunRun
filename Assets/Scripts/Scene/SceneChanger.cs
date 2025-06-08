@@ -19,18 +19,19 @@ public class SceneChanger : MonoBehaviour
         switch (gameObject.name)
         {
             case "StartButton":
-                //SceneManager.LoadScene("MainScene");
                 ChangeScene.Instance.ChangeTo("StartScene 2");
                 break;
             case "StartGameButton":
-                //SceneManager.LoadScene("EndingListsScene");
-                ChangeScene.Instance.ChangeTo("MainScene");
+                ChangeScene.Instance.ChangeTo("GameScene");
+                break;
+            case "EndingListsButton":
+                ChangeScene.Instance.ChangeTo("EndingListsScene");
                 break;
             case "CharacterListsButton":
                 SceneManager.LoadScene("CharacterListsScene");
                 break;
             case "BackButton":
-                SceneManager.LoadScene("StartScene");
+                ChangeScene.Instance.ChangeTo("StartScene 1");
                 break;
         }
     }

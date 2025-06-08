@@ -21,4 +21,8 @@ public struct EventInfo
 
     [Header("배경이 유지되어야 하는 이벤트인가")]
     public bool consistBackground;
+
+    //수정 : event 김명진
+    [Header("이벤트씬 번호저장(중복방지)")]
+    public int eventIndex;
 }

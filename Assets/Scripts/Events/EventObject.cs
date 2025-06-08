@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public class EventGenerator : MonoBehaviour
 {
+    public static EventGenerator Instance { get; private set; }
+
     [Header("이벤트 유지 배경 시간 (초)")]
     public float keepEventDuration = 0f;
 
@@ -18,7 +20,7 @@ public class EventGenerator : MonoBehaviour
     public bool consistBackground;
 
     private bool hasGenerated = false;
-    private BackgroundSpawner backgroundSpawner;
+    public BackgroundSpawner backgroundSpawner;
     private EventSeletor eventSeletor;
 
     public bool test; // 임시 이벤트 선택지 테스트용
@@ -27,12 +29,20 @@ public class EventGenerator : MonoBehaviour
     {
         eventInfo = info;
         consistBackground = eventInfo.consistBackground;
+        EventProgressManager.SetCurrentEventIndex(eventInfo.eventIndex);
         // 비오는 이벤트면 날씨 = 비온다
         if (eventInfo.eventName == "비가 옴") GameManager.Instance.isRain = true;
     }
 
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        
         backgroundSpawner = GameObject.Find("BackgroundSpawner").GetComponent<BackgroundSpawner>();
         eventSeletor = GameObject.Find("EventSeletor").GetComponent<EventSeletor>();
     }
@@ -48,6 +58,10 @@ public class EventGenerator : MonoBehaviour
 
     private void GenerateEventSet(EventInfo eventInfo)
     {
+        // currentEventIndex 먼저 설정(event김명진)
+        EventProgressManager.SetCurrentEventIndex(eventInfo.eventIndex);
+        // 이벤트 시작 시 게임 멈추기
+        GameManager.Instance.PauseGame();
         // 이벤트 씬을 Additive 모드로 로드
         SceneManager.LoadScene(eventInfo.eventSceneName, LoadSceneMode.Additive);
 

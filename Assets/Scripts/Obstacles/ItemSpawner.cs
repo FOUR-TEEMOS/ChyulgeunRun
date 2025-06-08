@@ -25,8 +25,8 @@ public class ItemSpawner : MonoBehaviour
 {
     [Header("장애물 생성용")]
     public List<WeightedObjects> prefabsToSpawn;
-    public Vector2 spawnPositionOffset;      
-    public float spawnInterval = 3f;
+    public Vector2 spawnPositionOffset;
+    public float spawnInterval = 2f;
     public float paryObsCool = 20f; // 패링 장애물이 다시 나타날 시간
     public float paryObsTimer = 0f; // 패링 장애물 전용 쿨타이머
     public float _blockRemain = 0f; // PdCoffee 관련 타이머
@@ -35,13 +35,19 @@ public class ItemSpawner : MonoBehaviour
     public GameObject selectedPrefab;
     private float timer = 0f;
 
-    [Header("커피 생성용")]
+    [Header("자판기기 생성용")]
     public GameObject vending_machine;
     public float cooltime_vending_machine = 60f;
     private float vendingTimer;
-    public float vendingBlockWindow = 2f; 
+    public float vendingBlockWindow = 2f;
     private float lastVendingTime = -Mathf.Infinity;
-    public GameObject Caffe;
+    float sinceLastVending;
+    bool blockAfter;
+    bool blockBefore;
+    bool vendingBlocking;
+
+    [Header("커피 프리팹 (인스펙터에서 8번 슬롯으로 할당)")]
+    public GameObject caffePrefab;
 
 
     [Header("끝 지점 연출용")]
@@ -81,13 +87,13 @@ public class ItemSpawner : MonoBehaviour
             Instantiate(vending_machine, spawnPos, Quaternion.identity, transform);
             lastVendingTime = Time.time;
             vendingTimer = cooltime_vending_machine;
+            GameManager.Instance.coffee_DrinkTimes += 1;
         }
         // 자판기 전후 2초 동안은 장애물 스폰 차단
-        float sinceLastVending = Time.time - lastVendingTime;
-        bool blockAfter = sinceLastVending < vendingBlockWindow;      // 스폰 직후 2초
-        bool blockBefore = vendingTimer < vendingBlockWindow;         // 스폰 직전 2초
-        bool vendingBlocking = blockAfter || blockBefore;
-
+        sinceLastVending = Time.time - lastVendingTime;
+        blockAfter = sinceLastVending < vendingBlockWindow;      // 스폰 직후 2초
+        blockBefore = vendingTimer < vendingBlockWindow;         // 스폰 직전 2초
+        vendingBlocking = blockAfter || blockBefore;
 
         // ================= 장애물 스폰 =====================
         timer += Time.deltaTime;
@@ -155,7 +161,7 @@ public class ItemSpawner : MonoBehaviour
             transform.position.y + spawnPositionOffset.y,
             0f
         );
-        
+
         if (selectedPrefab != null)
         {
             GameObject spawned = Instantiate(selectedPrefab, spawnPos, Quaternion.identity);
@@ -172,6 +178,29 @@ public class ItemSpawner : MonoBehaviour
     public void BlockSpawn(float time)
     {
         _blockRemain += time;
+    }
+
+    public void SpawnVendingMachine()
+    {
+        Vector3 spawnPos = new Vector3(8f, -1.6f, 0);
+        Instantiate(vending_machine, spawnPos, Quaternion.identity, transform);
+    }
+
+    public void SpawnCaffe()
+    {
+        if (caffePrefab == null)
+        {
+            Debug.LogError("caffePrefab 이 할당되지 않았습니다!");
+            return;
+        }
+
+        Vector3 spawnPos = new Vector3(24f, 1f, 0f);
+        GameObject spawned = Instantiate(
+            caffePrefab,
+            spawnPos,
+            Quaternion.identity,
+            this.transform
+        );
     }
 
 }

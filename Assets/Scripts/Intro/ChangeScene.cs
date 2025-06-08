@@ -42,16 +42,28 @@ public class ChangeScene : MonoBehaviour
                 black.blocksRaycasts = true;
             })
             .OnComplete(() =>
-            { 
-                SceneManager.LoadScene(sceneName);
+            {
+                StartCoroutine(LoadScene(sceneName));
             }); 
+    }
+
+    IEnumerator LoadScene(string sceneName)
+    {
+        AsyncOperation async = SceneManager.LoadSceneAsync(sceneName);
+        async.allowSceneActivation = false;
+
+        yield return new WaitUntil(() => async.progress >= 0.9f);
+
+        async.allowSceneActivation = true;          // 실제 전환
+        yield return async;                         // 완료까지 한 프레임 더 대기
     }
 
     public void SceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        black.DOFade(0f, fadeDuration)
+        black.DOFade(0f, fadeDuration * 2.5f)
             .OnComplete(()=> { black.blocksRaycasts = false; });
     }
+
 
 
 

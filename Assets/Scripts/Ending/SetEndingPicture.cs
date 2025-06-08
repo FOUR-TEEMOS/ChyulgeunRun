@@ -19,6 +19,7 @@ public class SetEndingPicture : MonoBehaviour
     public Image ending;
     void Start()
     {
+        Debug.Log(EndingData.getEndingData("1"));
         //PlayerPrefs.DeleteAll();
         if (EndingData.getEndingData(gameObject.name) == 0)
         {

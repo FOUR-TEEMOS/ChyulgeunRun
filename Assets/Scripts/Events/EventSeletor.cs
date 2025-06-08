@@ -53,6 +53,8 @@ public class EventSeletor : MonoBehaviour
         EventGenerator handler = evObj.GetComponent<EventGenerator>();
         handler.Initialize(selected);
 
+        EventProgressManager.SetCurrentEventIndex(selected.eventIndex); // 수정 event김명진
+
         // 이벤트 선택 후 비활성화
         gameObject.SetActive(false);
     }

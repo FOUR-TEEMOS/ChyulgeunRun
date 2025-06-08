@@ -215,22 +215,23 @@ public class PlayerController : MonoBehaviour
         hasParried = false;
         canParryInput = false;
         xCooldownTimer = xCooldown;
-
-        anim.SetBool("Caution", false);
-        anim.SetBool("ParryingSuccess", false);
-        isCaught = true;
-        GameManager.Instance.caught(3f);
-
+        
         StartCoroutine(ResetCaught());
 
-        if(gameObject.name == "do(Clone)") damageAmount = ItemDataManager.getAmount("do(Clone)");
+        GameManager.Instance.do_HelloTimes += 1;
+
+        if (gameObject.name == "do(Clone)") damageAmount = ItemDataManager.getAmount("do(Clone)");
         else if (gameObject.name == "somae(Clone)") damageAmount = ItemDataManager.getAmount("somae(Clone)");
         GameManager.Instance.TakeMentalDamage(damageAmount);
         Debug.Log("반격 실패...");
     }
 
-    private IEnumerator ResetCaught()
+    public IEnumerator ResetCaught()
     {
+        anim.SetBool("Caution", false);
+        anim.SetBool("ParryingSuccess", false);
+        isCaught = true;
+        GameManager.Instance.caught(3f);
         yield return new WaitForSeconds(3f);  // 붙잡힘 시간
         anim.SetBool("ParryingSuccess", true);
         isCaught = false;

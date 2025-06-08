@@ -43,12 +43,17 @@ public class GameManager : MonoBehaviour
     [Header("날씨")]
     public bool isRain = false;
 
+    [Header("히든 엔딩 관련 변수")]
+    public int do_HelloTimes = 0;
+    public int coffee_CreateTimes = 0;
+    public int coffee_DrinkTimes = 0;
+
     void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // 씬 전환 시 유지
+            //    DontDestroyOnLoad(gameObject); // 씬 전환 시 유지
         }
         else
         {
@@ -63,10 +68,10 @@ public class GameManager : MonoBehaviour
         currentMental = maxMental;
         mentalDrainRate = 0.5f;
         currentDistance = 0f;
-        maxDistance = 1500f;  
+        maxDistance = 1500f;
         moveSpeed = 1f;
-        baseSpeed = 10f;       
-        speedMultiplier = 1f;  
+        baseSpeed = 10f;
+        speedMultiplier = 1f;
         usingSpeedUp = 0f;
         usingSpeedUpAmount = 1f;
         isGamePaused = false;
@@ -134,7 +139,7 @@ public class GameManager : MonoBehaviour
         {
             caughtTimer -= Time.deltaTime;
             speedMultiplier = 0f;   // 이동 멈춤
-            return;                 
+            return;
         }
 
         if (usingSpeedUp > 0f)
@@ -194,9 +199,9 @@ public class GameManager : MonoBehaviour
     // 회사 도착
     private void GoalIn()
     {
-        PauseGame();
-        // 회사 도착 엔딩
+
     }
+
 }
 
 
