@@ -1760,7 +1760,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1278182846}
         m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
-        m_MethodName: ChangeScene
+        m_MethodName: ChangeScenes
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3727,14 +3727,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 984323068}
     m_Modifications:
-    - target: {fileID: 233013525023216872, guid: 321b2fdb40f1623448ad013b30fbd724, type: 3}
-      propertyPath: i
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7582714225625759306, guid: 321b2fdb40f1623448ad013b30fbd724, type: 3}
-      propertyPath: m_SortingOrder
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 3579225680502287713, guid: dc45fddb38e4a8a499a5c788e33c1556, type: 3}
       propertyPath: m_Name
       value: "1_\uAE30\uBCF8_\uBE4C\uB529"
@@ -3783,6 +3775,14 @@ PrefabInstance:
       propertyPath: defaultSpeed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 233013525023216872, guid: 321b2fdb40f1623448ad013b30fbd724, type: 3}
+      propertyPath: i
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7582714225625759306, guid: 321b2fdb40f1623448ad013b30fbd724, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3796,22 +3796,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 984323068}
     m_Modifications:
-    - target: {fileID: 680116083977137228, guid: b79f0fa716b794f4ea888d08bbb80c66, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1931348258671945082, guid: b79f0fa716b794f4ea888d08bbb80c66, type: 3}
-      propertyPath: speed
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5094618639102237066, guid: b79f0fa716b794f4ea888d08bbb80c66, type: 3}
-      propertyPath: m_SortingOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5290919664406859946, guid: b79f0fa716b794f4ea888d08bbb80c66, type: 3}
-      propertyPath: i
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 630355002651137181, guid: d3c8c3e93ada16a469c9cad98d228db6, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -3876,6 +3860,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 680116083977137228, guid: b79f0fa716b794f4ea888d08bbb80c66, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1931348258671945082, guid: b79f0fa716b794f4ea888d08bbb80c66, type: 3}
+      propertyPath: speed
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5094618639102237066, guid: b79f0fa716b794f4ea888d08bbb80c66, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5290919664406859946, guid: b79f0fa716b794f4ea888d08bbb80c66, type: 3}
+      propertyPath: i
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3889,18 +3889,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 984323068}
     m_Modifications:
-    - target: {fileID: 3339133048901869763, guid: 4ee79a3acb0acc44481d131ea0ba086a, type: 3}
-      propertyPath: m_SortingOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7185564421127483990, guid: 4ee79a3acb0acc44481d131ea0ba086a, type: 3}
-      propertyPath: i
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8438760347056087537, guid: 4ee79a3acb0acc44481d131ea0ba086a, type: 3}
-      propertyPath: speed
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 602484792788155259, guid: 3ab861c054475a84d93d99dd84c2f2b9, type: 3}
       propertyPath: m_Name
       value: "0_\uAE30\uBCF8_\uBC30\uACBD"
@@ -3959,6 +3947,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8438760347056087537, guid: 3ab861c054475a84d93d99dd84c2f2b9, type: 3}
       propertyPath: defaultSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3339133048901869763, guid: 4ee79a3acb0acc44481d131ea0ba086a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7185564421127483990, guid: 4ee79a3acb0acc44481d131ea0ba086a, type: 3}
+      propertyPath: i
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438760347056087537, guid: 4ee79a3acb0acc44481d131ea0ba086a, type: 3}
+      propertyPath: speed
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
