@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="Assets/Art/Start/%EC%B6%9C%EA%B7%BC%EB%9F%B0.png" alt="출근런" width="480">
-</p>
-
 # 출근런: 오늘도 간신히 사회인
 
 출근길을 달리며 멘탈을 지키고, 회사에 도착했을 때의 상태에 따라 10가지 미래 중 하나를 보는 2D 러너 게임입니다.
