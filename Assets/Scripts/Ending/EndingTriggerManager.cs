@@ -25,7 +25,7 @@ public class EndingTriggerManager : MonoBehaviour
         else if (PlayerPrefs.GetInt("ifdrink", -1) == 1) { PlayerPrefs.SetInt("ifdrink", 0); ending = 5; }
         else if (GameManager.Instance.do_HelloTimes > 5) ending = 7;
         else if (GameManager.Instance.coffee_DrinkTimes >= 5) ending = 8;
-        else if (chance < (2 / 7)) ending = 9;
+        else if (chance < (2f / 7f)) ending = 9;
         else if (GameManager.Instance.currentMental >= 60f) ending = 1;
         else if (GameManager.Instance.currentMental >= 40f) ending = 2;
         else if (GameManager.Instance.currentMental >= 20f) ending = 3;
