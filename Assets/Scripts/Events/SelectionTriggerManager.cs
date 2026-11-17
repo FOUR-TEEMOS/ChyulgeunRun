@@ -28,15 +28,15 @@ public class SelectionTriggerManager : MonoBehaviour
         }
         itemSpawner = GameObject.Find("Spawner").GetComponent<ItemSpawner>();
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
-        camera = Camera.main; // ¿À·ù »ý±â¸é :::::::::: °ÔÀÓ¾À ¾Æ´Ñ ¾ÀÀº maincamera ¸ðµÎ ²ô±â
+        camera = Camera.main; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ :::::::::: ï¿½ï¿½ï¿½Ó¾ï¿½ ï¿½Æ´ï¿½ ï¿½ï¿½ï¿½ï¿½ maincamera ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-        coffeePool = new List<WeightedObjects>(); // coffeePool¿¡ Ä¿ÇÇ¸¸ Ãß°¡ÇÏ´Â °úÁ¤
+        coffeePool = new List<WeightedObjects>(); // coffeePoolï¿½ï¿½ Ä¿ï¿½Ç¸ï¿½ ï¿½ß°ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½
         foreach (var w in itemSpawner.prefabsToSpawn)
             if (w.prefab.CompareTag("recovery"))
                 coffeePool.Add(w);
     }
 
-    // privateÀ¸·Î ¸ðµÎ ±¸ÇöÇÏ°í public, case·Î¸¸ »ç¿ë°¡´ÉÇÏ°Ô Á¦ÀÛ
+    // privateï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ public, caseï¿½Î¸ï¿½ ï¿½ï¿½ë°¡ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½
     public void SelectionTrigger(int num)
     {
         switch (num)
@@ -53,72 +53,74 @@ public class SelectionTriggerManager : MonoBehaviour
             case 10: NotSchoolRunFight(); break;
             case 11: SamplingCoffee(); break;
             case 12: NonSamplingCoffee(); break;
-            default: Debug.Log("¾ø´Â Selection Trigger"); break;
+            default: Debug.Log("ï¿½ï¿½ï¿½ï¿½ Selection Trigger"); break;
         }
     }
 
 
     private void CoffeeDrink()
-    { // 50% È®·ü·Î 3ÃÊ°£ ¼Óµµ 3¹è & ¹«Àû
+    { // 50% È®ï¿½ï¿½ï¿½ï¿½ 3ï¿½Ê°ï¿½ ï¿½Óµï¿½ 3ï¿½ï¿½ & ï¿½ï¿½ï¿½ï¿½
+         if (Random.value < 0.04f)
+            PlayerPrefs.SetInt("ifdrink", 1); // ì˜¤ëž˜ëœ ì»¤í”¼ë¥¼ ë§ˆì‹¬ -> 4% í™•ë¥ ë¡œ ížˆë“ ì—”ë”© 5ë²ˆ
         float chance = Random.value * 100f; // 0 ~ 100
         if (chance < 50f)
         {
             GameManager.Instance.SetSpeedMultiplier(3f, 3f, 1);
-            Debug.Log("¼Óµµ3¹è");
+            Debug.Log("ï¿½Óµï¿½3ï¿½ï¿½");
         }
         else
             StartCoroutine(CameraReverse(20f));;
     }
 
     private void NotCoffeeDrink()
-    { // À§¾Æ·¡ ¹ÝÀü
+    { // ï¿½ï¿½ï¿½Æ·ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 
     private void FastRoadGo()
-    { // 45ÃÊ °£ Àå¾Ö¹° ½ºÆù½Ã°£ 3ÃÊ -> 2ÃÊ, ³²Àº °Å¸® 5% °¨¼Ò (* Update¿¡¼­ Ã³¸®)
+    { // 45ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Ö¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ 3ï¿½ï¿½ -> 2ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ 5% ï¿½ï¿½ï¿½ï¿½ (* Updateï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½)
         FastRoadGo_timer = 45f;
         GameManager.Instance.maxDistance -= GameManager.Instance.maxDistance / 20f;
     }
 
     private void NotFastRoadGo()
-    { // º¯È­ ¾øÀ½
-        // EventGenerator.Instance°¡ ÀÌ¹Ì ¹è°æÀ» ¹Ù²å´Ù¸é
+    { // ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½
+        // EventGenerator.Instanceï¿½ï¿½ ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½Ù¸ï¿½
         var eg = EventGenerator.Instance;
         eg.consistBackground = true;
 
-        // Áï½Ã °ø»çÀå ¹è°æ Á¦°Å
+        // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         eg.backgroundSpawner.StopCurrentBackgrounds();
-        // ±âº» ¹è°æ ´Ù½Ã ±ò¾Æ ÁÖ±â
+        // ï¿½âº» ï¿½ï¿½ï¿½ ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ö±ï¿½
         for (int i = 0; i < 5; i++)
             eg.backgroundSpawner.SpawnBg(i);
     }
 
     private void WalletOwnerFind()
-    { // ÀÚÆÇ±â+ ³²Àº °Å¸® 5%Áõ°¡
+    { // ï¿½ï¿½ï¿½Ç±ï¿½+ ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ 5%ï¿½ï¿½ï¿½ï¿½
         if (coffeePool == null || coffeePool.Count == 0)
         {
-            Debug.LogWarning("[SelectionTrigger] coffeePool is empty ¡æ WalletOwnerFind skipped");
+            Debug.LogWarning("[SelectionTrigger] coffeePool is empty ï¿½ï¿½ WalletOwnerFind skipped");
             return;
         }
 
-        // ´É·Â Ä¿ÇÇ »ý¼º ±¸Çö ÇÊ¿ä
+        // ï¿½É·ï¿½ Ä¿ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½
         itemSpawner.SpawnCaffe();
 
         GameManager.Instance.maxDistance += GameManager.Instance.maxDistance / 20f;
     }
 
     private void WalletIgnore()
-    { // º¯È­ ¾øÀ½
+    { // ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½
 
     }
 
     private void RainyHurryUp()
-    { // 10ÃÊ °£ Ã¼·Â ¼Ò¸ð 1.5¹è Áõ°¡ (* Update¿¡¼­ Ã³¸®), rainy Ã¼Å© X
+    { // 10ï¿½ï¿½ ï¿½ï¿½ Ã¼ï¿½ï¿½ ï¿½Ò¸ï¿½ 1.5ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (* Updateï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½), rainy Ã¼Å© X
         RainyHurryUp_timer = 10f;
     }
 
     private void RainyUmbrella()
-    { // 30ÃÊ °£ ¹°¿õµ¢ÀÌ µ¥¹ÌÁö 2¹è, ¼±ÅÃÁö ÀÚÃ¼°¡ ºñ¿Ã¶§ µîÀåÇÏ¹Ç·Î rainy Ã¼Å© X
+    { // 30ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 2ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½Ã¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¹Ç·ï¿½ rainy Ã¼Å© X
         RainyUmbrella_timer = 30f;
     }
 
@@ -128,17 +130,17 @@ public class SelectionTriggerManager : MonoBehaviour
     }
 
     private void SchoolRunFight()
-    { // ³²Àº °Å¸® 10% °¨¼Ò
+    { // ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ 10% ï¿½ï¿½ï¿½ï¿½
         GameManager.Instance.maxDistance -= GameManager.Instance.maxDistance / 10f;
     }
 
     private void NotSchoolRunFight()
-    { // Ä¿ÇÇ ÀÚÆÇ±â »ý¼º
+    { // Ä¿ï¿½ï¿½ ï¿½ï¿½ï¿½Ç±ï¿½ ï¿½ï¿½ï¿½ï¿½
         itemSpawner.SpawnVendingMachine();
     }
 
     private void SamplingCoffee()
-    { // Á¤½Å·Â È¸º¹, 50% È®·ü·Î µµ¸¦ ¾Æ½Ê´Ï±î ºÙÀâÈ÷±â
+    { // ï¿½ï¿½ï¿½Å·ï¿½ È¸ï¿½ï¿½, 50% È®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Æ½Ê´Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         GameManager.Instance.RecoverMental(20f);
 
         float chance = Random.value * 100f; // 0 ~ 100
