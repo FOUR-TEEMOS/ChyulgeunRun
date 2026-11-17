@@ -110,10 +110,6 @@
 2. Unity Hub에서 Unity **6000.1.3f1**로 프로젝트 폴더를 엽니다.
 3. `Assets/Scene/IntroScene/StartScene 1.unity`를 열고 Play를 누릅니다.
 
-기준 해상도는 1920×1080입니다.
-
-빌드할 때는 `File > Build Profiles`의 씬 목록에서 `StartScene 1`을 맨 위로 옮겨야 합니다. v1.0에서는 `EventScene1`이 첫 번째로 등록되어 있습니다.
-
 ## 기술 스택
 
 - Unity 6 (6000.1.3f1), Universal Render Pipeline 2D
