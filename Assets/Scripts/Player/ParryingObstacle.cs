@@ -20,7 +20,7 @@ public class DoObstacle : MonoBehaviour
         // 플레이어와 일정 거리 이내 접근 시 반격 준비
         if (!warningGiven && Vector2.Distance(transform.position, player.position) < warningDistance)
         {
-            playerController.StartParry();
+            playerController.StartParry(gameObject);
             warningGiven = true;
         }
     }

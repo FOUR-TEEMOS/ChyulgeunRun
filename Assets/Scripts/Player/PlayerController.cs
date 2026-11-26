@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     private bool canParryInput = true;
     public float xCooldownTimer = 0f;
     public float xCooldown = 2f;  // X키 쿨타임 (연타 방지)
-    int damageAmount;
+    private GameObject parryTarget;
 
     [Header("입장 연출용")]
     public float remain;
@@ -108,6 +108,7 @@ public class PlayerController : MonoBehaviour
                     GameManager.Instance.protection = false;
                     isParrying = false;
                     hasParried = false;
+                    parryTarget = null;
                 }
                 else
                     ParryFail();
@@ -169,8 +170,9 @@ public class PlayerController : MonoBehaviour
     }
 
     // 반격 타이밍 시작
-    public void StartParry()
+    public void StartParry(GameObject obstacle)
     {
+        parryTarget = obstacle;
         if (isSliding)
         {
             isSliding = false;
@@ -199,6 +201,7 @@ public class PlayerController : MonoBehaviour
 
     public void ParrySuccess()
     {
+        parryTarget = null;
         isParrying = false;
         hasParried = false;
         canParryInput = false;
@@ -220,9 +223,9 @@ public class PlayerController : MonoBehaviour
 
         GameManager.Instance.do_HelloTimes += 1;
 
-        if (gameObject.name == "do(Clone)") damageAmount = ItemDataManager.getAmount("do(Clone)");
-        else if (gameObject.name == "somae(Clone)") damageAmount = ItemDataManager.getAmount("somae(Clone)");
-        GameManager.Instance.TakeMentalDamage(damageAmount);
+        int damage = parryTarget != null ? ItemDataManager.getAmount(parryTarget.name) : 0;
+        GameManager.Instance.TakeMentalDamage(damage);
+        parryTarget = null;
         Debug.Log("반격 실패...");
     }
 
