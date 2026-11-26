@@ -41,7 +41,7 @@ public class EventSeletor : MonoBehaviour
 
         // 랜덤으로 이벤트 선택
         int idx = Random.Range(0, candidates.Count);
-        EventInfo selected = eventList[idx];
+        EventInfo selected = candidates[idx];
         Debug.Log($"[EventSelector] 선택된 이벤트: {selected.eventName}");
 
         // 이벤트 오브젝트 생성
