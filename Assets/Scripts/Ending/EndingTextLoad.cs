@@ -28,20 +28,28 @@ public class EndingTextLoad : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !isTyping)
+        if (!Input.GetKeyDown(KeyCode.Space)) return;
+
+        // 찍히는 중: 지금 줄을 끝까지 보여줌
+        if (isTyping)
         {
             StopAllCoroutines();
-            currentLine++;
+            dialogueText.text = dialogueLines[ending].lines[currentLine];
+            isTyping = false;
+            return;
+        }
 
-            if (currentLine < dialogueLines[ending].lines.Count)
-            {
-                StartCoroutine(TypeLine(dialogueLines[ending].lines[currentLine]));
-            }
-            else
-            {
-                PlayerPrefs.SetInt("thisEnding", -1);
-                SceneManager.LoadScene("EndingListsScene");
-            }
+        // 다 찍힌 상태: 다음 줄
+        currentLine++;
+
+        if (currentLine < dialogueLines[ending].lines.Count)
+        {
+            StartCoroutine(TypeLine(dialogueLines[ending].lines[currentLine]));
+        }
+        else
+        {
+            PlayerPrefs.SetInt("thisEnding", -1);
+            SceneManager.LoadScene("EndingListsScene");
         }
     }
 
