@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.isGamePaused) return; 
         // 점프 (C 키)
         if (Input.GetKeyDown(KeyCode.C) && isGrounded && !isSliding && !isCaught)
         {
@@ -76,7 +77,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // 슬라이드 종료 (Z 키에서 손 뗐을 때)
-        if (Input.GetKeyUp(KeyCode.Z) && isSliding && !isCaught && !isParrying)
+        if (!Input.GetKey(KeyCode.Z) && isSliding && !isCaught && !isParrying)
         {
             isSliding = false;
 
