@@ -20,10 +20,11 @@ public class VendingMachine : MonoBehaviour
         if (!other.CompareTag("Player")) return;
 
         used = true;
-
+        GameManager.Instance.coffee_DrinkTimes += 1;
         GameManager.Instance.RecoverMental(recoveryAmount);
 
         Animator playerAnim = other.GetComponent<Animator>();
         playerAnim.SetTrigger("EatCoffee");
     }
 }
+ 

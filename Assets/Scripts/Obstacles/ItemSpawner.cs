@@ -87,7 +87,6 @@ public class ItemSpawner : MonoBehaviour
             Instantiate(vending_machine, spawnPos, Quaternion.identity, transform);
             lastVendingTime = Time.time;
             vendingTimer = cooltime_vending_machine;
-            GameManager.Instance.coffee_DrinkTimes += 1;
         }
         // 자판기 전후 2초 동안은 장애물 스폰 차단
         sinceLastVending = Time.time - lastVendingTime;
