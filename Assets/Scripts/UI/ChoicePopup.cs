@@ -131,7 +131,7 @@ public class ChoicePopup : MonoBehaviour
                     : "아무일도 일어나지 않았습니다.";
             case 3://
                 return firstOption
-                    ? "자판기가 생성됩니다, 남은 거리가 5% 증가합니다."
+                    ? "보답으로 카페에 갑니다, 남은 거리가 5% 증가합니다."
                     : "아무일도 일어나지 않았습니다.";
             case 4://
                 return firstOption

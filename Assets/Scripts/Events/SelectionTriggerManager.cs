@@ -96,13 +96,7 @@ public class SelectionTriggerManager : MonoBehaviour
     }
 
     private void WalletOwnerFind()
-    { // ���Ǳ�+ ���� �Ÿ� 5%����
-        if (coffeePool == null || coffeePool.Count == 0)
-        {
-            Debug.LogWarning("[SelectionTrigger] coffeePool is empty �� WalletOwnerFind skipped");
-            return;
-        }
-
+    { 
         // �ɷ� Ŀ�� ���� ���� �ʿ�
         itemSpawner.SpawnCaffe();
 
