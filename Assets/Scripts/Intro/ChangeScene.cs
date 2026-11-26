@@ -8,7 +8,7 @@ using DG.Tweening;
 public class ChangeScene : MonoBehaviour
 {
     public CanvasGroup black;
-    private float fadeDuration = 1f;
+    private float fadeDuration = 0.1f;
 
 
     public static ChangeScene Instance { get; private set; }
@@ -18,11 +18,11 @@ public class ChangeScene : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // ¾À ÀüÈ¯ ½Ã À¯Áö
+            DontDestroyOnLoad(gameObject); // ï¿½ï¿½ ï¿½ï¿½È¯ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         }
         else
         {
-            Destroy(gameObject); // Áßº¹ ¹æÁö
+            Destroy(gameObject); // ï¿½ßºï¿½ ï¿½ï¿½ï¿½ï¿½
             return;
         }
 
@@ -34,9 +34,10 @@ public class ChangeScene : MonoBehaviour
         SceneManager.sceneLoaded -= SceneLoaded;
     }
 
-    public void ChangeTo(string sceneName)
+    public void ChangeTo(string sceneName, float fadeOutDuration = -1f)
     {
-        black.DOFade(1f, fadeDuration)
+        float duration = fadeOutDuration > 0f ? fadeOutDuration : fadeDuration;
+        black.DOFade(0.5f, duration)
             .OnStart(() =>
             {
                 black.blocksRaycasts = true;
@@ -54,13 +55,13 @@ public class ChangeScene : MonoBehaviour
 
         yield return new WaitUntil(() => async.progress >= 0.9f);
 
-        async.allowSceneActivation = true;          // ½ÇÁ¦ ÀüÈ¯
-        yield return async;                         // ¿Ï·á±îÁö ÇÑ ÇÁ·¹ÀÓ ´õ ´ë±â
+        async.allowSceneActivation = true;          // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
+        yield return async;                         // ï¿½Ï·ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½
     }
 
     public void SceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        black.DOFade(0f, fadeDuration * 2.5f)
+        black.DOFade(0f, fadeDuration)
             .OnComplete(()=> { black.blocksRaycasts = false; });
     }
 

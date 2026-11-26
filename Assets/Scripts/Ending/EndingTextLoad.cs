@@ -13,8 +13,8 @@ using System.Collections;
 //                                     This script provides setter and getter for the ending value
 public class EndingTextLoad : MonoBehaviour
 {
-    public TextMeshProUGUI dialogueText;                // UI Text (¶Ç´Â TextMeshProUGUI)
-    public List<DialogueGroup> dialogueLines;         // ´ë»ç ¸®½ºÆ®
+    public TextMeshProUGUI dialogueText;                // UI Text (ï¿½Ç´ï¿½ TextMeshProUGUI)
+    public List<DialogueGroup> dialogueLines;         // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
     public float typingSpeed = 0.05f;          
     public int ending;
 
@@ -30,6 +30,7 @@ public class EndingTextLoad : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && !isTyping)
         {
+            StopAllCoroutines();
             currentLine++;
 
             if (currentLine < dialogueLines[ending].lines.Count)

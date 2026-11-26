@@ -27,31 +27,43 @@ public class StartSceneTrigger : MonoBehaviour
     }
 
     private IEnumerator Routine()
-    {
-        yield return new WaitForSeconds(1f);
-        Tween tween = one.DOFade(1f, 1.5f);
-        yield return tween.WaitForCompletion();
-        //yield return new WaitForSeconds(1f);
-        tween = two.DOFade(1f, 1.5f);
-        yield return tween.WaitForCompletion();
-        //yield return new WaitForSeconds(1f);
-        tween = two_2.rectTransform.DOMoveX(1386f, 0.2f);
-        yield return tween.WaitForCompletion();
-        yield return new WaitForSeconds(1.3f);
-        tween = three.DOFade(1f, 1.5f);
-        yield return tween.WaitForCompletion();
-        //yield return new WaitForSeconds(1f);
-        tween = four.DOFade(1f, 0.1f);
-        yield return tween.WaitForCompletion();
-        tween = four.rectTransform.DOMoveX(1500f, 0.5f);
-        yield return tween.WaitForCompletion();
-        yield return new WaitForSeconds(3f);
-        //button.gameObject.SetActive(true);
-        //ChangeScene.Instance.ChangeTo("GameScene");
+    {   
+        // 컷 1
+        yield return PlayCut(DOTween.Sequence()
+        .AppendInterval(1f)
+        .Append(one.DOFade(1f, 1.5f)));
+
+        // 컷 2
+        yield return PlayCut(DOTween.Sequence()
+        .Append(two.DOFade(1f, 1.5f))
+        .Append(two_2.rectTransform.DOMoveX(1386f, 0.2f))
+        .AppendInterval(1.3f));
+
+        // 컷 3
+        yield return PlayCut(DOTween.Sequence()
+        .Append(three.DOFade(1f, 1.5f)));
+
+        // 컷 4 (+ 끝나고 3초 대기)
+        yield return PlayCut(DOTween.Sequence()
+        .Append(four.DOFade(1f, 0.1f))
+        .Append(four.rectTransform.DOMoveX(1500f, 0.5f))
+        .AppendInterval(3f));
+
         SceneManager.LoadScene("GameScene");
-
-        yield return null;
     }
-
+    // 컷 하나를 재생하다가 Space를 누르면 그 컷을 바로 끝냄
+    private IEnumerator PlayCut(Sequence cut)
+    {
+        while (cut.IsActive() && !cut.IsComplete())
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                cut.Complete();
+                yield return null;   // 같은 Space 입력이 다음 컷까지 넘기지 않게 한 프레임 쉼
+                yield break;
+            }
+            yield return null;
+        }
+}
 
 }

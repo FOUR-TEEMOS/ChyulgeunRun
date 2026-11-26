@@ -14,12 +14,23 @@ using UnityEngine.SceneManagement;
 //                                   |           BackButton - StartScene
 public class SceneChanger : MonoBehaviour
 {
+    private static bool introSeen = false;
     public void ChangeScenes()
     {
         switch (gameObject.name)
         {
             case "StartButton":
-                ChangeScene.Instance.ChangeTo("StartScene 2");
+                if (introSeen)
+                {
+                    // 두 번째 판부터: 인트로 없이 바로 게임
+                    ChangeScene.Instance.ChangeTo("GameScene", 1f);
+                }
+                else
+                {
+                    // 첫 판: 인트로
+                    introSeen = true;
+                    ChangeScene.Instance.ChangeTo("StartScene 2", 1f);
+                }
                 break;
             case "StartGameButton":
                 ChangeScene.Instance.ChangeTo("GameScene");
