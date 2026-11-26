@@ -7,15 +7,7 @@ public class AutoEventTrigger : MonoBehaviour
     [Header("씬1용 이벤트 정보 (인스펙터에 드래그)")]
     public EventInfo autoEventInfo;
 
-    private static bool _firstEventFired = false;
-
-    // 플레이 모드 진입 시마다 이 메서드가 호출되어 플래그를 초기화합니다.
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-    private static void ResetFirstEventFlag()
-    {
-        _firstEventFired = false;
-        Debug.Log("[AutoEventTrigger] _firstEventFired 리셋됨");
-    }
+    private bool _firstEventFired = false;
 
     void Start()
     {
